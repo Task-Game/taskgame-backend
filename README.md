@@ -1,24 +1,42 @@
-# Lumen PHP Framework
+# Task Game 
+    Aplicação com objetivo de ajudar empresas e pessoas a se organizarem de forma divertida.
+    Utilizaremos Flask e react para o desenvolvimento desse projeto
+    Repositorio para o front-end: https://github.com/Task-Game/task-game-front 
+    
+    Email para contato: tcctaskgame@gmail.com
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+# Documentação
+Flask -> https://flask.palletsprojects.com/en/1.1.x/
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Documentação interna
+- Swaager
+- PyDocs
 
-## Official Documentation
+## Para rodar o projeto
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+```
+---python3 -m venv .venv
+---source .venv/bin/activate
+---pip install -t requirements.txt
+---python main.py
+```
 
-## Contributing
+## Rotas
+### Projetos
+[]
+[]
+[]
+[]
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Tarefas
+[]
+[]
+[]
+[]
+[]
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Pessoas
+[]
+[]
+[]
+[]
