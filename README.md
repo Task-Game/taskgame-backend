@@ -23,16 +23,16 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 ## Rotas
 ### Projetos
-[] Listas Projetos
-[] Adicionar Projetos
-[] Editar Projetos
-[] Deletar Projetos
+[ ] Listas Projetos
+[ ] Adicionar Projetos
+[ ] Editar Projetos
+[ ] Deletar Projetos
 
 ### Pessoas
-[] Listas pessoas de projeto
-[] Adicionar pessoas
-[] Editar pessoas
-[] Excluir pessoas
+[ ] Listas pessoas de projeto
+[ ] Adicionar pessoas
+[ ] Editar pessoas
+[ ] Excluir pessoas
 
 
 ### Tarefas
