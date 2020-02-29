@@ -6,8 +6,8 @@ Utilizaremos Flask e react para o desenvolvimento desse projeto
 Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 # Documentação/Dependencias usadas
-[Flask](https://flask.palletsprojects.com/en/1.1.x)
-[Requests](https://requests.readthedocs.io/en/master/)
+- [Flask](https://flask.palletsprojects.com/en/1.1.x)
+- [Requests](https://requests.readthedocs.io/en/master/)
 
 ## Documentação interna
 - Swaager
@@ -23,20 +23,24 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 ## Rotas
 ### Projetos
-[]
-[]
-[]
-[]
-
-### Tarefas
-[]
-[]
-[]
-[]
-[]
+[] Listas Projetos
+[] Adicionar Projetos
+[] Editar Projetos
+[] Deletar Projetos
 
 ### Pessoas
-[]
-[]
-[]
-[]
+[] Listas pessoas de projeto
+[] Adicionar pessoas
+[] Editar pessoas
+[] Excluir pessoas
+
+
+### Tarefas
+[] Listar Tarefas individuais
+[] Listar Tarefas por projeto
+[] Listar Tarefas por projeto por pessoa
+[] Adicionar Tarefas individuais
+[] Adicionar Tarefas a Projeto
+[] Editar Tarefas
+[] Excluir Tarefa individual
+[] Excluir tarefa de projeto
