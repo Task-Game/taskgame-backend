@@ -13,7 +13,6 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 ## Documentação interna
 - Swaager
-- PyDocs
 
 ## Estrutura da Aplicação
 - app (Pasta principal)
