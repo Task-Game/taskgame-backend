@@ -4,6 +4,8 @@ from flask_cors import CORS
 from config import BaseConfig
 from config import configure_app
 
+from api.Usuario import usuario_routes
+
 def create_app():
     app = Flask(__name__)
 
@@ -17,6 +19,6 @@ def create_app():
     configure_app(app)
     app.url_map.strict_slashes = False
 
-    # app.register_blueprint(user, url_prefix='/api/users')
+    app.register_blueprint(usuario_routes.user_bp)
 
     return app
