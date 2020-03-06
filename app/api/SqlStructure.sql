@@ -76,10 +76,8 @@ CREATE TABLE Projetos(
 CREATE TABLE Usuarios(
   idUsuario INTEGER NOT NULL AUTO_INCREMENT,
   TipoUsuario_idTipoUsuario INTEGER NOT NULL,
-  bome VARCHAR(100),
-  apelido VARCHAR(20),
+  nome VARCHAR(100),
   email VARCHAR(60),
-  empresa VARCHAR(40),
   dataNascimento DATE,
   senha VARCHAR(16),
   pontos INTEGER,
