@@ -1,25 +1,17 @@
 from flask import Blueprint, make_response, request
 from flask import corrent_app as app
 from .Usuario import Usuario
+import json
 user_bp = Blueprint('user_bp', __name__)
 
 
-@user_bp.route('/api/v1/user/', methods=['GET', 'PUT', 'POST', 'DELETE'])
+@user_bp.route('/api/v1/user/login', methods=['GET'])
 def user_login():
-    if request.method == 'GET':
-        request_json = request.get_json()
-        
-        if request_json['action'] == 'login':
-            email = request_json['data']['email']
-            senha = request_json['data']['senha']
-            
-            loggin_aprove = Usuario.authenticated_login(email, senha)
+    request_json = request.get_json()
 
-    return loggin_aprove # True or False
+    email = request_json['data']['email']
+    senha = request_json['data']['senha']
 
-    if request.method == 'POST':
-        request_json = request.get_json()
+    loggin_aprove = Usuario.authenticated_login(email, senha)
 
-        if request_json['action'] == 'register':
-            
-
+    return loggin_aprove
