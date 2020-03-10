@@ -56,7 +56,7 @@ CREATE TABLE Tarefa(
   prazo DATE,
   alarme DATETIME,
   recompensa INTEGER,
-  Feito TINYINT,
+  status INT,
   PRIMARY KEY(idTarefas), 
   FOREIGN KEY (Projeto_idProjeto) REFERENCES Projeto(idProjeto),
   FOREIGN KEY (Raridade_idRaridade) REFERENCES Raridade(idRaridade),

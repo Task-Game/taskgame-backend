@@ -181,7 +181,7 @@ class Tarefa(db.Model):
                            nullable=False,
                            index=False)
 
-    conclusao = db.Column(db.DateTime,
+    status = db.Column(db.Integer,
                           unique=False,
                           nullable=True,
                           index=False)
