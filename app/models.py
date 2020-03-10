@@ -12,7 +12,10 @@ class Usuario(db.Model):
     idUsuario = db.Column(db.Integer,
                           primary_key=True)
 
-    TipoUsuario_idTipoUsuario = db.relationship('TipoUsuario')
+    # TipoUsuario_idTipoUsuario = db.Column(db.Integer,
+    #                                       db.ForeignKey(
+    #                                           'TipoUsuario.idTipoUsuario'),
+    #                                       nullable=False)
 
     nome = db.Column(db.String(80),
                      unique=False,
@@ -61,13 +64,13 @@ class Item(db.Model):
     idItem = db.Column(db.Integer,
                        primary_key=True)
 
-    Loja_idLoja = db.relationship('Loja')
+    # Loja_idLoja = db.relationship('Loja')
 
     nome = db.Column(db.String(50),
                      unique=True,
                      nullable=False,
                      index=False)
-    
+
     descricao = db.Column(db.String(100),
                           unique=False,
                           nullable=False,
@@ -78,13 +81,14 @@ class Item(db.Model):
                       nullable=False,
                       index=False)
 
+
 class Meta(db.Model):
     __tablename__ = 'Meta'
 
     idMeta = db.Column(db.Integer,
                        primary_key=True)
-    
-    Tarefa_idTarefa = db.relationship('Tarefa')
+
+    # Tarefa_idTarefa = db.relationship('Tarefa')
 
     descricao = db.Column(db.String(100),
                           unique=False,
@@ -95,3 +99,113 @@ class Meta(db.Model):
                       unique=False,
                       nullable=False,
                       index=True)
+
+
+class Raridade(db.Model):
+    __tablename__ = 'Raridade'
+
+    idRaridade = db.Column(db.Integer,
+                           primary_key=True)
+
+    descricao = db.Column(db.String(100),
+                          unique=False,
+                          nullable=False,
+                          index=False)
+
+    recompensa = db.Column(db.Integer,
+                           unique=False,
+                           nullable=False,
+                           index=True)
+
+
+class TipoUsuario(db.Model):
+    __tablename__ = 'TipoUsuario'
+
+    idTipoUsuario = db.Column(db.Integer,
+                              primary_key=True)
+
+    # usuario = db.relationship('Usuario')
+
+    descricao = db.Column(db.String(100),
+                          unique=False,
+                          nullable=False,
+                          index=False)
+
+
+class Loja(db.Model):
+    __tablename__ = 'Loja'
+
+    idLoja = db.Column(db.Integer,
+                       primary_key=True)
+
+    dataAbertura = db.Column(db.DateTime,
+                             unique=False,
+                             nullable=False,
+                             index=False)
+
+    dataFechamento = db.Column(db.DateTime,
+                               unique=False,
+                               nullable=False,
+                               index=False)
+
+
+class Tarefa(db.Model):
+    __tablename__ = 'Tarefa'
+
+    idTarefa = db.Column(db.Integer,
+                         primary_key=True)
+
+    # Projeto_idProjeto =
+
+    # Raridade_idRaridade =
+
+    # Frequencia_idFrequencia =
+
+    nome = db.Column(db.String(100),
+                     unique=True,
+                     nullable=False,
+                     index=False)
+
+    descricao = db.Column(db.String(100),
+                          unique=False,
+                          nullable=False,
+                          index=False)
+
+    prazo = db.Column(db.DateTime,
+                      unique=False,
+                      nullable=False,
+                      index=False)
+
+    recompensa = db.Column(db.Integer,
+                           unique=True,
+                           nullable=False,
+                           index=False)
+
+    conclusao = db.Column(db.DateTime,
+                          unique=False,
+                          nullable=True,
+                          index=False)
+
+
+class Projeto(db.Model):
+    __tablename__ = 'Projeto'
+
+    idProjeto = db.Column(db.Integer,
+                          primary_key=True)
+
+    # Loja_idLoja =
+
+    titulo = db.Column(db.String(50),
+                       unique=False,
+                       nullable=False,
+                       index=False)
+
+    descricao = db.Column(db.String(100),
+                          unique=False,
+                          nullable=False,
+                          index=False)
+
+    prazo = db.Column(db.DateTime,
+                      unique=False,
+                      nullable=True,
+                      index=False)

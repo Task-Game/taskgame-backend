@@ -1,30 +1,30 @@
 create database taskGame;
 use taskGame;
 
--- CREATE TABLE Frequencia(
---   idFrequencia INTEGER NOT NULL AUTO_INCREMENT,
---   descricao INTEGER,
---   PRIMARY KEY(idFrequencia)
--- );
+CREATE TABLE Frequencia(
+  idFrequencia INTEGER NOT NULL AUTO_INCREMENT,
+  descricao INTEGER,
+  PRIMARY KEY(idFrequencia)
+);
 
--- CREATE TABLE Itens(
---   idItem INTEGER NOT NULL AUTO_INCREMENT,
---   Loja_idLoja INTEGER NOT NULL
---   nome VARCHAR(50),
---   descricao VARCHAR(50),
---   valor INTEGER,
---   PRIMARY KEY(idItens),
---   FOREIGN KEY (Loja_idLoja) REFERENCES Loja(idLoja)
--- );
+CREATE TABLE Itens(
+  idItem INTEGER NOT NULL AUTO_INCREMENT,
+  Loja_idLoja INTEGER NOT NULL
+  nome VARCHAR(50),
+  descricao VARCHAR(50),
+  valor INTEGER,
+  PRIMARY KEY(idItens),
+  FOREIGN KEY (Loja_idLoja) REFERENCES Loja(idLoja)
+);
 
--- CREATE TABLE Metas(
---   idMetas INTEGER NOT NULL AUTO_INCREMENT,
---   Tarefa_idTarefa INTEGER NOT NULL,
---   Descricao VARCHAR(50),
---   Feito TINYINT,
---   PRIMARY KEY(idMetas),
---   FOREIGN KEY (Tarefa_idTarefa) REFERENCES Tarefa(idTarefa)
--- );
+CREATE TABLE Metas(
+  idMetas INTEGER NOT NULL AUTO_INCREMENT,
+  Tarefa_idTarefa INTEGER NOT NULL,
+  Descricao VARCHAR(50),
+  Feito TINYINT,
+  PRIMARY KEY(idMetas),
+  FOREIGN KEY (Tarefa_idTarefa) REFERENCES Tarefa(idTarefa)
+);
 
 CREATE TABLE Raridade(
   idRaridade INTEGER NOT NULL AUTO_INCREMENT,
@@ -64,10 +64,9 @@ CREATE TABLE Tarefa(
 );
 
 CREATE TABLE Projeto(
-  idProjeto INTEGER NOT NULL AUTO_INCREMENT,
+  idProjeto INTEGER NO  T NULL AUTO_INCREMENT,
   Loja_idLoja INTEGER NOT NULL,
   titulo VARCHAR(25),
-  acesso VARCHAR(8),
   descricao VARCHAR(100),
   prazo DATE,
   PRIMARY KEY(idProjeto),
