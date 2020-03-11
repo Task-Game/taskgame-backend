@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from manager import db
 
+
 class Frequencia(db.Model):
     __tablename__ = "Frequencia"
 
@@ -135,6 +136,7 @@ class Projeto(db.Model):
                       nullable=True,
                       index=False)
 
+    
 
 class Tarefa(db.Model):
     __tablename__ = 'Tarefa'
@@ -147,11 +149,12 @@ class Tarefa(db.Model):
                                   nullable=True)
 
     Raridade_idRaridade = db.Column(db.Integer,
-                                  db.ForeignKey('Raridade.idRaridade'))
+                                    db.ForeignKey('Raridade.idRaridade'))
 
     Frequencia_idFrequencia = db.Column(db.Integer,
-                                  db.ForeignKey('Frequencia.idFrequencia'),
-                                  nullable=True)
+                                        db.ForeignKey(
+                                            'Frequencia.idFrequencia'),
+                                        nullable=True)
 
     nome = db.Column(db.String(100),
                      unique=True,
@@ -215,3 +218,26 @@ class Usuario(db.Model):
                        unique=False,
                        nullable=True,
                        index=False)
+
+    usuario_projeto = db.relationship('usuario_projeto', backref="usuarioProjeto")
+
+    usuario_projeto = db.relationship('usuario_tarefa', backref="usuarioTarefa")
+
+
+usuario_projeto = db.Table('usuario_projeto',
+                           db.Column('idUsuarioProjeto', primary_key=True),
+                           db.Column('Usuario_idUsuario',
+                                     db.Integer,
+                                     db.ForeignKey('Usuario.idUsuario')),
+                            db.Column('Projeto_idTarefa',
+                                      db.Integer,
+                                      db.ForeignKey('Projeto.idProjeto')))
+
+usuario_tarefa = db.Table('usuario_Tarefa',
+                           db.Column('idUsuarioTarefa', primary_key=True),
+                           db.Column('Usuario_idUsuario',
+                                     db.Integer,
+                                     db.ForeignKey('Usuario.idUsuario')),
+                            db.Column('Tarefa_idTarefa',
+                                      db.Integer,
+                                      db.ForeignKey('Tarefa.idTarefa')))
