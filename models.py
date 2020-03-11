@@ -1,7 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-import manager
-
-db = manager.db
+from manager import db
 
 class Frequencia(db.Model):
     __tablename__ = "Frequencia"
