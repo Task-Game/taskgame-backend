@@ -4,7 +4,7 @@ from flask_cors import CORS
 from config import BaseConfig
 from config import configure_app
 
-from api.Usuario import usuario_routes
+from .api.Usuario import usuario_routes
 
 def create_app():
     app = Flask(__name__)
