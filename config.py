@@ -1,4 +1,6 @@
-from os import environ
+from dotenv import load_dotenv
+load_dotenv()
+from os import getenv
 
 class BaseConfig(object):
     """
@@ -6,21 +8,21 @@ class BaseConfig(object):
     ser usados por produção e desenvolvimento
     """
 
-    ORIGINS = environ.get('ORIGINS') # Para chamadas da API
-    SECRET_KEY = environ.get('SECRET_KEY') # Chave de validação
+    ORIGINS = getenv('ORIGINS') # Para chamadas da API
+    SECRET_KEY = getenv('SECRET_KEY') # Chave de validação
 
 class Development(BaseConfig):
     """
     Configurações de desenvolvimento. Usaremos o modo Debug
     Modo debub = Para mais informações leia a documentação
     """
-    PORT = environ.get('PORT')
-    DEBUG = environ.get('DEBUG')
-    TESTING = environ.get('TESTING')
-    ENV = environ.get('ENV')
+    PORT = getenv('PORT')
+    DEBUG = getenv('DEBUG')
+    TESTING = getenv('TESTING')
+    ENV = getenv('ENV')
 
-    SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_TRACK_MODIFICATIONS = environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
+    SQLALCHEMY_DATABASE_URI = getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_TRACK_MODIFICATIONS = getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
 
 
 

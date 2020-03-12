@@ -4,3 +4,4 @@ class Usuario():
 
 
     def authenticated_login(email, senha):
+        pass

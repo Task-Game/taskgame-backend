@@ -1,5 +1,4 @@
 from flask import Blueprint, make_response, request
-from flask import corrent_app as app
 from .Usuario import Usuario
 import json
 user_bp = Blueprint('user_bp', __name__)
