@@ -60,7 +60,7 @@ def upgrade(idUser):
 def destroy(idUser):
     request_json = request.get_json()
 
-    idUser - request_json['data']['idUser']
+    idUser = request_json['data']['idUser']
 
     user = Usuario.destroy(idUser)
 
