@@ -40,6 +40,9 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 3. ```$ pip install -t requirements.txt```
 4. ```$ python main.py```
 
+## Rodar migrations
+1. ////////////
+
 ## Rotas
 ### Projetos
 - [ ] Listas Projetos

@@ -22,7 +22,7 @@ def create():
 
     return response
 
-@user_bp.route('/api/v1.0/user/<:idUser>', methods=['GET'])
+@user_bp.route('/api/v1.0/user/<idUser>', methods=['GET'])
 def show(idUser):
     request_json = request.get_json()
 
@@ -33,7 +33,7 @@ def show(idUser):
     return user
 
 
-@user_bp.route('/api/v1.0/user/<:idUser>/edit', methods=['GET'])
+@user_bp.route('/api/v1.0/user/<idUser>/edit', methods=['GET'])
 def edit(idUSer):
     request_json = request.get_json()
 
@@ -44,7 +44,7 @@ def edit(idUSer):
 
     return user
 
-@user_bp.route('/api/v1.0/user/<:idUser>', methods=['PUT'])
+@user_bp.route('/api/v1.0/user/<idUser>', methods=['PUT'])
 def upgrade(idUser):
     request_json = request.get_json()
 
@@ -56,7 +56,7 @@ def upgrade(idUser):
     return user
 
 
-@user_bp.route('/api/v1.0/user/<:idUser>', methods=['DELETE'])
+@user_bp.route('/api/v1.0/user/<idUser>', methods=['DELETE'])
 def destroy(idUser):
     request_json = request.get_json()
 

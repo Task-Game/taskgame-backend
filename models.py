@@ -194,6 +194,7 @@ class Usuario(db.Model):
     TipoUsuario_idTipoUsuario = db.Column(db.Integer,
                                           db.ForeignKey('TipoUsuario.idTipoUsuario'))
 
+
     nome = db.Column(db.String(80),
                      unique=False,
                      nullable=False,

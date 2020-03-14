@@ -4,6 +4,7 @@ certifi==2019.11.28
 chardet==3.0.4
 Click==7.0
 Flask==1.1.1
+Flask-Alembic==2.0.1
 Flask-Cors==3.0.8
 Flask-Migrate==2.5.2
 Flask-Script==2.0.6
@@ -15,6 +16,7 @@ Mako==1.1.2
 MarkupSafe==1.1.1
 pkg-resources==0.0.0
 pycodestyle==2.5.0
+PyMySQL==0.9.3
 python-dateutil==2.8.1
 python-dotenv==0.12.0
 python-editor==1.0.4

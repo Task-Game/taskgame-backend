@@ -10,8 +10,6 @@ utils.md
 .flaskenv
 *.pyc
 *.pyo
-env/
-env*
 dist/
 build/
 *.egg
