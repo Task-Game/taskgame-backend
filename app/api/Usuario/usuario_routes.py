@@ -18,6 +18,9 @@ def new():
 
 @user_bp.route('/api/v1.0/user/', methods=['POST'])
 def create():
+    """
+    Recebe um json como data e cria um novo usuario no banco
+    """
     response = Usuario.create()
 
     return response

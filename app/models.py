@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from manager import db
+import datetime
 
 
 class Frequencia(db.Model):
@@ -78,7 +79,8 @@ class Loja(db.Model):
     dataAbertura = db.Column(db.DateTime,
                              unique=False,
                              nullable=False,
-                             index=False)
+                             index=False,
+                             default=datetime.datetime.now())
 
     dataFechamento = db.Column(db.DateTime,
                                unique=False,
@@ -121,6 +123,17 @@ class Projeto(db.Model):
 
     loja = db.relationship('Loja', backref="projeto")
 
+    dataAbertura = db.Column(db.DateTime,
+                             unique=False,
+                             nullable=False,
+                             index=False,
+                             default=datetime.datetime.now())
+
+    dataFechamento = db.Column(db.DateTime,
+                               unique=False,
+                               nullable=False,
+                               index=False)
+
     titulo = db.Column(db.String(50),
                        unique=False,
                        nullable=False,
@@ -136,7 +149,6 @@ class Projeto(db.Model):
                       nullable=True,
                       index=False)
 
-    
 
 class Tarefa(db.Model):
     __tablename__ = 'Tarefa'
@@ -155,6 +167,12 @@ class Tarefa(db.Model):
                                         db.ForeignKey(
                                             'Frequencia.idFrequencia'),
                                         nullable=True)
+
+    dataAbertura = db.Column(db.DateTime,
+                             unique=False,
+                             nullable=False,
+                             index=False,
+                             default=datetime.datetime.now())
 
     nome = db.Column(db.String(100),
                      unique=True,
@@ -192,8 +210,9 @@ class Usuario(db.Model):
                           primary_key=True)
 
     TipoUsuario_idTipoUsuario = db.Column(db.Integer,
-                                          db.ForeignKey('TipoUsuario.idTipoUsuario'))
-
+                                          db.ForeignKey(
+                                              'TipoUsuario.idTipoUsuario'),
+                                          default=0)
 
     nome = db.Column(db.String(80),
                      unique=False,
@@ -205,12 +224,18 @@ class Usuario(db.Model):
                       nullable=False,
                       index=True)
 
+    dataCriacao = db.Column(db.DateTime,
+                            unique=False,
+                            nullable=False,
+                            index=False,
+                            default=datetime.datetime.now())
+
     dataNascimento = db.Column(db.DateTime,
                                unique=False,
                                nullable=False,
                                index=False)
 
-    senha = db.Column(db.String(18),
+    senha = db.Column(db.String(250),
                       unique=False,
                       nullable=False,
                       index=False)
@@ -218,27 +243,29 @@ class Usuario(db.Model):
     pontos = db.Column(db.Integer,
                        unique=False,
                        nullable=True,
-                       index=False)
+                       index=False,
+                       default=0)
 
-    usuario_projeto = db.relationship('usuario_projeto', backref="usuarioProjeto")
+    usuario_projeto = db.relationship(
+        'usuario_projeto', backref="usuario_projeto")
 
-    usuario_projeto = db.relationship('usuario_tarefa', backref="usuarioTarefa")
+    usuario_projeto = db.relationship(
+        'usuario_tarefa', backref="usuario_tarefa")
 
 
 usuario_projeto = db.Table('usuario_projeto',
-                           db.Column('idUsuarioProjeto', primary_key=True),
-                           db.Column('Usuario_idUsuario',
-                                     db.Integer,
+                           db.Column('idUsuarioProjeto', db.Integer,
+                                     primary_key=True),
+                           db.Column('Usuario_idUsuario', db.Integer,
                                      db.ForeignKey('Usuario.idUsuario')),
-                            db.Column('Projeto_idTarefa',
-                                      db.Integer,
-                                      db.ForeignKey('Projeto.idProjeto')))
 
-usuario_tarefa = db.Table('usuario_Tarefa',
-                           db.Column('idUsuarioTarefa', primary_key=True),
-                           db.Column('Usuario_idUsuario',
-                                     db.Integer,
-                                     db.ForeignKey('Usuario.idUsuario')),
-                            db.Column('Tarefa_idTarefa',
-                                      db.Integer,
-                                      db.ForeignKey('Tarefa.idTarefa')))
+                           db.Column('Projeto_idTarefa', db.Integer,
+                                     db.ForeignKey('Projeto.idProjeto')))
+
+usuario_tarefa = db.Table('usuario_tarefa',
+                          db.Column('idUsuarioTarefa', db.Integer,
+                                    primary_key=True),
+                          db.Column('Usuario_idUsuario', db.Integer,
+                                    db.ForeignKey('Usuario.idUsuario')),
+                          db.Column('Tarefa_idTarefa', db.Integer,
+                                    db.ForeignKey('Tarefa.idTarefa')))

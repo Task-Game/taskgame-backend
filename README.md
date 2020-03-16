@@ -51,6 +51,12 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 7. Abrir o seu banco de dados e verificar se as tableas foram criadas
 8. Aproveite c:
 
+## Ciclo de alteração das migrates
+1. Fazer alguma alteração no 'models.py'
+2. python manager.py db migrate
+3. python manager.py db upgrade
+4. Volta para o passo 1 
+
 ## Rotas
 ### Projetos
 - [ ] Index(Mostrar todos)
