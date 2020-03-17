@@ -5,6 +5,7 @@ from config import BaseConfig
 from config import configure_app
 
 from .api.Usuario import usuario_routes
+from .api.Tarefa import tarefa_routes
 
 def create_app():
     app = Flask(__name__)
@@ -22,5 +23,6 @@ def create_app():
 
 
     app.register_blueprint(usuario_routes.user_bp)
+    app.register_blueprint(tarefa_routes.task_bp)
 
     return app
