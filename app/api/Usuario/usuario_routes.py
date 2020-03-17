@@ -1,4 +1,4 @@
-from flask import Blueprint, make_response, request
+from flask import Blueprint, make_response, request, jsonify
 from .Usuario import Usuario
 import json
 user_bp = Blueprint('user_bp', __name__)
@@ -21,9 +21,19 @@ def create():
     """
     Recebe um json como data e cria um novo usuario no banco
     """
-    response = Usuario.create()
 
-    return response
+    if request.is_json:
+        request_json = request.get_json()
+
+        email = request_json['data']['email']
+        nome = request_json['data']['nome']
+        senha = request_json['data']['senha']
+
+        user = Usuario.create(email, nome, senha)
+
+        return user
+
+    
 
 @user_bp.route('/api/v1.0/user/<idUser>', methods=['GET'])
 def show(idUser):
@@ -79,5 +89,5 @@ def user_login():
 
     loggin_aprove = Usuario.authenticated_login(email, senha)
 
-    return loggin_aprove
+    return loggin_aprove, 200
 

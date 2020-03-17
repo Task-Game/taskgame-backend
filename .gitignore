@@ -20,6 +20,7 @@ _mailinglist
 .pytest_cache/
 .idea/
 docs/_build/
+teste.py
 
 # Coverage reports
 htmlcov/

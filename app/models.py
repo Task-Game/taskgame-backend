@@ -1,9 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 from manager import db
 import datetime
+import hashlib
 
 
-class Frequencia(db.Model):
+class FrequenciaModel(db.Model):
     __tablename__ = "Frequencia"
 
     idFrequencia = db.Column(db.Integer,
@@ -14,7 +15,7 @@ class Frequencia(db.Model):
     tarefa = db.relationship('Tarefa', backref="frequencia")
 
 
-class Meta(db.Model):
+class MetaModel(db.Model):
     __tablename__ = 'Meta'
 
     idMeta = db.Column(db.Integer,
@@ -34,7 +35,7 @@ class Meta(db.Model):
                       index=True)
 
 
-class Raridade(db.Model):
+class RaridadeModel(db.Model):
     __tablename__ = 'Raridade'
 
     idRaridade = db.Column(db.Integer,
@@ -53,7 +54,7 @@ class Raridade(db.Model):
     tarefa = db.relationship('Tarefa', backref="raridade")
 
 
-class TipoUsuario(db.Model):
+class TipoUsuarioModel(db.Model):
     __tablename__ = 'TipoUsuario'
 
     idTipoUsuario = db.Column(db.Integer,
@@ -67,7 +68,7 @@ class TipoUsuario(db.Model):
     usuario = db.relationship('Usuario', backref='tipoUsuario')
 
 
-class Loja(db.Model):
+class LojaModel(db.Model):
     __tablename__ = 'Loja'
 
     idLoja = db.Column(db.Integer,
@@ -90,7 +91,7 @@ class Loja(db.Model):
     item = db.relationship('Item', backref='item')
 
 
-class Item(db.Model):
+class ItemModel(db.Model):
     __tablename__ = 'Item'
 
     idItem = db.Column(db.Integer,
@@ -115,7 +116,7 @@ class Item(db.Model):
                       index=False)
 
 
-class Projeto(db.Model):
+class ProjetoModel(db.Model):
     __tablename__ = 'Projeto'
 
     idProjeto = db.Column(db.Integer,
@@ -150,7 +151,7 @@ class Projeto(db.Model):
                       index=False)
 
 
-class Tarefa(db.Model):
+class TarefaModel(db.Model):
     __tablename__ = 'Tarefa'
 
     idTarefa = db.Column(db.Integer,
@@ -200,11 +201,11 @@ class Tarefa(db.Model):
                        index=False)
 
 
-class Usuario(db.Model):
+class UsuarioModel(db.Model):
     """
     Classe model responsavel pelos dados do usuario
     """
-
+    
     __tablename__ = 'Usuario'
     idUsuario = db.Column(db.Integer,
                           primary_key=True)
@@ -230,10 +231,10 @@ class Usuario(db.Model):
                             index=False,
                             default=datetime.datetime.now())
 
-    dataNascimento = db.Column(db.DateTime,
-                               unique=False,
-                               nullable=False,
-                               index=False)
+    codigoConfirmacao = db.Column(db.String(50),
+                                  unique=False,
+                                  nullable=False,
+                                  )
 
     senha = db.Column(db.String(250),
                       unique=False,
@@ -243,8 +244,7 @@ class Usuario(db.Model):
     pontos = db.Column(db.Integer,
                        unique=False,
                        nullable=True,
-                       index=False,
-                       default=0)
+                       index=False,)
 
     usuario_projeto = db.relationship(
         'usuario_projeto', backref="usuario_projeto")
