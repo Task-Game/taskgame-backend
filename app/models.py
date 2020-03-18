@@ -195,7 +195,7 @@ class TarefaModel(db.Model):
                            nullable=False,
                            index=False)
 
-    status = db.Column(db.Integer,
+    status = db.Column(db.Boolean,
                        unique=False,
                        nullable=True,
                        index=False)

@@ -1,4 +1,4 @@
-from flask import Blueprint, make_response, request, jsonify
+from flask import Blueprint, request, Response
 from .Usuario import Usuario
 import json
 user_bp = Blueprint('user_bp', __name__)
@@ -8,7 +8,7 @@ user_bp = Blueprint('user_bp', __name__)
 def index():
     response = Usuario.index()
 
-    return response
+    return response, Response(status=200)
 
 
 @user_bp.route('/api/v1.0/users', methods=['POST'])
@@ -27,7 +27,7 @@ def create():
 
         user = Usuario.create(email, nome, senha)
 
-        return user
+        return user, Response(status=201)
 
     
 
@@ -39,7 +39,7 @@ def show(idUser):
 
     user = Usuario.show(idUser)
 
-    return user
+    return user, Response(status=200)
 
 
 @user_bp.route('/api/v1.0/users/<idUser>', methods=['PUT'])
@@ -51,7 +51,7 @@ def upgrade(idUser):
 
     user = Usuario.upgrade(idUser)
 
-    return user
+    return user, Response(status=200)
 
 
 @user_bp.route('/api/v1.0/users/<idUser>', methods=['DELETE'])
@@ -62,7 +62,7 @@ def destroy(idUser):
 
     user = Usuario.destroy(idUser)
 
-    return user
+    return user, Response(status=200)
 
 
 @user_bp.route('/api/v1/user/login', methods=['GET'])
@@ -74,7 +74,7 @@ def login():
 
     loggin_aprove = Usuario.authenticated_login(email, senha)
 
-    return loggin_aprove, 200
+    return loggin_aprove, Response(status=200)
 
 
 @user_bp.route('/api/v1.0/users/<idUser>/tasks_in_user', methods=['GET'])
@@ -85,5 +85,5 @@ def tasks_in_user(idUser):
 
     user = Usuario.tasks_in_user(idUser)
 
-    return user
+    return user, Response(status=200)
 

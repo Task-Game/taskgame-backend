@@ -7,7 +7,7 @@ task_bp = Blueprint('task_bp', __name__)
 def index():
     response = Tarefa.index()
 
-    return response
+    return response, Response(status=200)
 
 
 @task_bp.route('/api/v1.0/tasks', methods=['POST'])
@@ -25,7 +25,7 @@ def show(idTask):
 
     task = Tarefa.show(idTask)
 
-    return task
+    return task, Response(status=200)
 
 @task_bp.route('/api/v1.0/tasks/<idTask>', methods=['PUT'])
 def upgrade(idTask):
@@ -36,7 +36,7 @@ def upgrade(idTask):
 
     task = Tarefa.upgrade(idTask)
 
-    return task
+    return task, Response(status=200)
 
 
 @task_bp.route('/api/v1.0/tasks/<idTask>', methods=['DELETE'])
@@ -47,7 +47,7 @@ def destroy(idTask):
 
     task = Tarefa.destroy(idTask)
 
-    return task
+    return task, Response(status=200)
 
 @task_bp.route('/api/v1.0/tasks/<idTask>/users_in_task', methods=['GET'])
 def users_in_task(idTask):
@@ -57,4 +57,4 @@ def users_in_task(idTask):
 
     task = Tarefa.userInTask(idTask)
 
-    return task, 200
+    return task, Response(status=200)
