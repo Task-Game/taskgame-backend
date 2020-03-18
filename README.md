@@ -59,32 +59,48 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 ## Rotas
 ### Projetos
-- [ ] Index(Mostrar todos)
-- [ ] New(Criar novo tipo de usario)
-- [ ] Create(Criar novo)
-- [ ] Show(Mostar um espeficio)
-- [ ] Edit(Editar usuarios)
-- [ ] Update(Editar um espefico)
-- [ ] Destroy(Deletar um especifico)
-
-- [ ] Listas tarefas do projeto    |\
-- [ ] Adicionar tarefa ao projeto  | |-> A decidir
-- [ ] Excluir tarega do projeto    |/
-
-### Pessoas
 - [x] Index(Mostrar todos)
-- [x] New(Criar novo tipo de usario)
 - [x] Create(Criar novo)
 - [x] Show(Mostar um espeficio)
-- [x] Edit(Editar usuarios)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
+- [x] Show user per project
+
+### Usuario
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
+- [x] Show task per user
+
+### Tarefas
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
+- [x] Show user in task
+
+### Item
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
+- [x] Show itens per shop
+
+### Loja
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
 - [x] Update(Editar um espefico)
 - [x] Destroy(Deletar um especifico)
 
-### Tarefas
-- [ ] Index(Mostrar todos)
-- [ ] New(Criar novo tipo de usario)
-- [ ] Create(Criar novo)
-- [ ] Show(Mostar um espeficio)
-- [ ] Edit(Editar usuarios)
-- [ ] Update(Editar um espefico)
-- [ ] Destroy(Deletar um especifico)
+### Meta
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
+- [x] Show goals in task
