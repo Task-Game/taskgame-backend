@@ -40,26 +40,51 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 3. ```$ pip install -t requirements.txt```
 4. ```$ python main.py```
 
+## Rodar migrations
+**VERIFICAR SE A VERSÃO DO PYTHON**(tem que ser ^3.6.~)
+1. Crie o banco de dados no seu pc, seja pelo comando SQL ou pelo workbench
+    ```create database <nome_do_banco>```
+2. Criar arquivo '.env' utilizando o '.env.exemple' como modelo
+3. Alterar os valores para os de seu ambiente
+5. ```$ python manager.py migrade```
+6. ```$ python manager.py upgrade```
+7. Abrir o seu banco de dados e verificar se as tableas foram criadas
+8. Aproveite c:
+
+## Ciclo de alteração das migrates
+1. Fazer alguma alteração no 'models.py'
+2. python manager.py db migrate
+3. python manager.py db upgrade
+4. Volta para o passo 1 
+
 ## Rotas
 ### Projetos
-- [ ] Listas Projetos
-- [ ] Adicionar Projetos
-- [ ] Editar Projetos
-- [ ] Deletar Projetos
+- [ ] Index(Mostrar todos)
+- [ ] New(Criar novo tipo de usario)
+- [ ] Create(Criar novo)
+- [ ] Show(Mostar um espeficio)
+- [ ] Edit(Editar usuarios)
+- [ ] Update(Editar um espefico)
+- [ ] Destroy(Deletar um especifico)
+
+- [ ] Listas tarefas do projeto    |\
+- [ ] Adicionar tarefa ao projeto  | |-> A decidir
+- [ ] Excluir tarega do projeto    |/
 
 ### Pessoas
-- [ ] Listas pessoas de projeto
-- [ ] Adicionar pessoas
-- [ ] Editar pessoas
-- [ ] Excluir pessoas
-
+- [x] Index(Mostrar todos)
+- [x] New(Criar novo tipo de usario)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Edit(Editar usuarios)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
 
 ### Tarefas
-- [ ] Listar Tarefas individuais
-- [ ] Listar Tarefas por projeto
-- [ ] Listar Tarefas por projeto por pessoa
-- [ ] Adicionar Tarefas individuais
-- [ ] Adicionar Tarefas a Projeto
-- [ ] Editar Tarefas
-- [ ] Excluir Tarefa individual
-- [ ] Excluir tarefa de projeto
+- [ ] Index(Mostrar todos)
+- [ ] New(Criar novo tipo de usario)
+- [ ] Create(Criar novo)
+- [ ] Show(Mostar um espeficio)
+- [ ] Edit(Editar usuarios)
+- [ ] Update(Editar um espefico)
+- [ ] Destroy(Deletar um especifico)
