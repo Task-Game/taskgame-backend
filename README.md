@@ -38,10 +38,10 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 1. ```$ python3 -m venv .venv```
 2. ```$ source .venv/bin/activate```
 3. ```$ pip install -t requirements.txt```
-4. ```$ python main.py```
+4. ```$ python run.py```
 
 ## Rodar migrations
-**VERIFICAR SE A VERSÃO DO PYTHON**(tem que ser ^3.6.~)
+**VERIFICAR SE A VERSÃO DO PYTHON**(python > ^3.6.~)
 1. Crie o banco de dados no seu pc, seja pelo comando SQL ou pelo workbench
     ```create database <nome_do_banco>```
 2. Criar arquivo '.env' utilizando o '.env.exemple' como modelo

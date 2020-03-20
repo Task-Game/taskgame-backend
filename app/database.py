@@ -4,7 +4,7 @@ import datetime
 import hashlib
 
 
-class FrequenciaModel(db.Model):
+class FrequenciaTable(db.Model):
     __tablename__ = "Frequencia"
 
     idFrequencia = db.Column(db.Integer,
@@ -15,7 +15,7 @@ class FrequenciaModel(db.Model):
     tarefa = db.relationship('Tarefa', backref="frequencia")
 
 
-class MetaModel(db.Model):
+class MetaTable(db.Model):
     __tablename__ = 'Meta'
 
     idMeta = db.Column(db.Integer,
@@ -35,7 +35,7 @@ class MetaModel(db.Model):
                       index=True)
 
 
-class RaridadeModel(db.Model):
+class RaridadeTable(db.Model):
     __tablename__ = 'Raridade'
 
     idRaridade = db.Column(db.Integer,
@@ -54,7 +54,7 @@ class RaridadeModel(db.Model):
     tarefa = db.relationship('Tarefa', backref="raridade")
 
 
-class TipoUsuarioModel(db.Model):
+class TipoUsuarioTable(db.Model):
     __tablename__ = 'TipoUsuario'
 
     idTipoUsuario = db.Column(db.Integer,
@@ -68,7 +68,7 @@ class TipoUsuarioModel(db.Model):
     usuario = db.relationship('Usuario', backref='tipoUsuario')
 
 
-class LojaModel(db.Model):
+class LojaTable(db.Model):
     __tablename__ = 'Loja'
 
     idLoja = db.Column(db.Integer,
@@ -91,7 +91,7 @@ class LojaModel(db.Model):
     item = db.relationship('Item', backref='item')
 
 
-class ItemModel(db.Model):
+class ItemTable(db.Model):
     __tablename__ = 'Item'
 
     idItem = db.Column(db.Integer,
@@ -116,7 +116,7 @@ class ItemModel(db.Model):
                       index=False)
 
 
-class ProjetoModel(db.Model):
+class ProjetoTable(db.Model):
     __tablename__ = 'Projeto'
 
     idProjeto = db.Column(db.Integer,
@@ -151,7 +151,7 @@ class ProjetoModel(db.Model):
                       index=False)
 
 
-class TarefaModel(db.Model):
+class TarefaTable(db.Model):
     __tablename__ = 'Tarefa'
 
     idTarefa = db.Column(db.Integer,
@@ -201,7 +201,7 @@ class TarefaModel(db.Model):
                        index=False)
 
 
-class UsuarioModel(db.Model):
+class UsuarioTable(db.Model):
     """
     Classe model responsavel pelos dados do usuario
     """
