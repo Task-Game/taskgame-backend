@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_cors import CORS
-from config import BaseConfig
-from config import configure_app
+from .config import BaseConfig
+from .config import configure_app
 
-from .api.Usuario import usuario_routes
+from .Usuario import usuario_routes
 # from .api.Tarefa import tarefa_routes
 # from .api.Projeto import projeto_routes
 # from .api.Metas import metas_router
