@@ -1,6 +1,5 @@
 from flask import Response, make_response, jsonify
 from sqlalchemy import exc
-from manager import db
 from datetime import datetime
 import hashlib
 

@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_cors import CORS
-from .config import BaseConfig
-from .config import configure_app
+from app.config_default import BaseConfig
+from app.config_default import configure_app
 
-from .Usuario import usuario_routes
+from app.Usuario import usuario_routes
 # from .api.Tarefa import tarefa_routes
 # from .api.Projeto import projeto_routes
 # from .api.Metas import metas_router
@@ -34,5 +34,7 @@ def create_app():
     # app.register_blueprint(metas_routes.goals_bp)
     # app.register_blueprint(item_routes.item_bp)
     # app.register_blueprint(loja_routes.shop_bp)
+
+    
 
     return app
