@@ -1,8 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from manager import db
 import datetime
 import hashlib
 
-db = SQLAlchemy()
+
 class FrequenciaTable(db.Model):
     __tablename__ = "Frequencia"
 

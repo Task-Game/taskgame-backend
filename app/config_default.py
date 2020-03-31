@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="../.env")
+load_dotenv(dotenv_path=".env")
 from os import getenv
 
 class BaseConfig(object):
@@ -40,8 +40,4 @@ def configure_app(app):
     app: Instancia do App flask
     """
 
-    configuration = {
-    'development':'config_default.Development'
-    }
-
-    app.config.from_object(configuration['development'])
+    app.config.from_object(Development)
