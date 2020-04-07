@@ -3,7 +3,6 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy(app)
 
 db.init_app(app)
@@ -12,7 +11,8 @@ manager = Manager(app)
 
 manager.add_command('db', MigrateCommand)
 
-from app import models
+from app.database import *
 
 if __name__ == "__main__":
     manager.run()
+    

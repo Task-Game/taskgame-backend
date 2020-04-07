@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8e89cc53e18f
+Revision ID: 3107c4952714
 Revises: 
-Create Date: 2020-03-16 16:55:52.895250
+Create Date: 2020-04-07 09:45:12.293201
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8e89cc53e18f'
+revision = '3107c4952714'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -62,7 +62,7 @@ def upgrade():
     sa.Column('descricao', sa.String(length=100), nullable=False),
     sa.Column('prazo', sa.DateTime(), nullable=False),
     sa.Column('recompensa', sa.Integer(), nullable=False),
-    sa.Column('status', sa.Integer(), nullable=True),
+    sa.Column('status', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['Frequencia_idFrequencia'], ['Frequencia.idFrequencia'], ),
     sa.ForeignKeyConstraint(['Projeto_idProjeto'], ['Projeto.idProjeto'], ),
     sa.ForeignKeyConstraint(['Raridade_idRaridade'], ['Raridade.idRaridade'], ),
@@ -76,7 +76,7 @@ def upgrade():
     sa.Column('nome', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=60), nullable=False),
     sa.Column('dataCriacao', sa.DateTime(), nullable=False),
-    sa.Column('dataNascimento', sa.DateTime(), nullable=False),
+    sa.Column('codigoConfirmacao', sa.String(length=50), nullable=False),
     sa.Column('senha', sa.String(length=250), nullable=False),
     sa.Column('pontos', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['TipoUsuario_idTipoUsuario'], ['TipoUsuario.idTipoUsuario'], ),
