@@ -15,41 +15,12 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 ## Documentação interna
 - Swaager
 
-## Estrutura da Aplicação
-- app (Pasta principal)
-    - app/api (Controla as rotas e a regra de negocio de cada um)
-        - app/api/Item
-        - app/api/Tarefa
-        - app/api/Usuario
-        - app/api/Foo
-        - app/api/__init__.py
-    - api/data (Camada de dados da aplicação/estrutura do banco)
-        - app/data/models (Contem os models, controla o banco)
-        - app/data/models/__init__.py
-        - app/data/models/SqlStructure.py (Estutura do banco)
-- __init__.py
-- manager.py (Controla as migrations Ex.: ```$ python3 manager.py bd init``` # Inicia a migration)
-- config.py (Configurações do ambiente do projeto)
-- runner.py (Roda a aplicação)
-
 ## Para rodar o projeto
-
-**NÃO RODAR COMO ADMIN**
-1. ```$ python3 -m venv .venv```
-2. ```$ source .venv/bin/activate```
-3. ```$ pip install -t requirements.txt```
-4. ```$ python run.py```
+- Verificar README da pasta APP
 
 ## Rodar migrations
-**VERIFICAR SE A VERSÃO DO PYTHON**(python > ^3.6.~)
-1. Crie o banco de dados no seu pc, seja pelo comando SQL ou pelo workbench
-    ```create database <nome_do_banco>```
-2. Criar arquivo '.env' utilizando o '.env.exemple' como modelo
-3. Alterar os valores para os de seu ambiente
-5. ```$ python manager.py migrade```
-6. ```$ python manager.py upgrade```
-7. Abrir o seu banco de dados e verificar se as tableas foram criadas
-8. Aproveite c:
+- Verificar README da pasta APP
+
 
 ## Ciclo de alteração das migrates
 1. Fazer alguma alteração no 'models.py'
@@ -59,48 +30,48 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 
 ## Rotas
 ### Projetos
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
-- [x] Show user per project
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
+- [] Show user per project
 
 ### Usuario
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
-- [x] Show task per user
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
+- [] Show task per user
 
 ### Tarefas
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
-- [x] Show user in task
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
+- [] Show user in task
 
 ### Item
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
-- [x] Show itens per shop
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
+- [] Show itens per shop
 
 ### Loja
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
 
 ### Meta
-- [x] Index(Mostrar todos)
-- [x] Create(Criar novo)
-- [x] Show(Mostar um espeficio)
-- [x] Update(Editar um espefico)
-- [x] Destroy(Deletar um especifico)
-- [x] Show goals in task
+- [] Index(Mostrar todos)
+- [] Create(Criar novo)
+- [] Show(Mostar um espeficio)
+- [] Update(Editar um espefico)
+- [] Destroy(Deletar um especifico)
+- [] Show goals in task
