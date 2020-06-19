@@ -4,7 +4,7 @@
 1. ```$ python3 -m venv .venv```
 2. ```$ source .venv/bin/activate```
 3. ```$ pip install -t requirements.txt```
-4. ```$ python run.py```
+4. ```$ python manager run.py```
 
 **VERIFICAR SE A VERSÃO DO PYTHON**(python > ^3.6.~)
 1. Crie o banco de dados no seu pc, seja pelo comando SQL ou pelo workbench

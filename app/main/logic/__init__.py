@@ -1,1 +1,1 @@
-# NOTE: business logic
+# NOTE: business logic, ou seja, CRUD

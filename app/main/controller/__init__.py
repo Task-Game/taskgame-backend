@@ -1,1 +1,1 @@
-# NOTE: EndPoints
+# NOTE: EndPoints, vai ter as rotas finais aqui, basicamente oq o ClassName_router fazia

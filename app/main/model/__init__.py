@@ -1,1 +1,1 @@
-# NOTE: Database models
+# NOTE: Database models, vai ter os arquivos separados aqui
