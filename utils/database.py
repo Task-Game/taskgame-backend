@@ -10,29 +10,31 @@ class FrequenciaTable(db.Model):
     idFrequencia = db.Column(db.Integer,
                              primary_key=True)
 
-    descricao = db.Column(db.String(50))
+    descricao = db.Column(db.String(50),
+                          nullable=False)
 
+    # A chave desta tabela esta na que se refere
     tarefa = db.relationship('Tarefa', backref="frequencia")
 
 
-class MetaTable(db.Model):
-    __tablename__ = 'Meta'
+class ChecklistTable(db.Model):
+    __tablename__ = 'Checklist'
 
-    idMeta = db.Column(db.Integer,
-                       primary_key=True)
+    idChecklist = db.Column(db.Integer,
+                            primary_key=True)
 
     Tarefa_idTarefa = db.Column(db.Integer,
-                                db.ForeignKey('Tarefa.idTarefa'))
+                                # A chave de tarefa esta aqui
+                                db.ForeignKey('Tarefa.idTarefa'),
+                                nullable=False)
 
     descricao = db.Column(db.String(100),
                           unique=False,
-                          nullable=False,
-                          index=False)
+                          nullable=False)
 
     feito = db.Column(db.Boolean,
                       unique=False,
-                      nullable=False,
-                      index=True)
+                      nullable=False)
 
 
 class RaridadeTable(db.Model):
@@ -43,29 +45,17 @@ class RaridadeTable(db.Model):
 
     descricao = db.Column(db.String(100),
                           unique=False,
-                          nullable=False,
-                          index=False)
+                          nullable=False)
 
     recompensa = db.Column(db.Integer,
                            unique=False,
                            nullable=False,
                            index=True)
 
+    # O id raridade esta na tabela tarefa
     tarefa = db.relationship('Tarefa', backref="raridade")
-
-
-class TipoUsuarioTable(db.Model):
-    __tablename__ = 'TipoUsuario'
-
-    idTipoUsuario = db.Column(db.Integer,
-                              primary_key=True)
-
-    descricao = db.Column(db.String(100),
-                          unique=False,
-                          nullable=False,
-                          index=False)
-
-    usuario = db.relationship('Usuario', backref='tipoUsuario')
+    # O id raridade esta na tabela item
+    item = db.relationship('Item', backref="raridade")
 
 
 class LojaTable(db.Model):
@@ -74,21 +64,17 @@ class LojaTable(db.Model):
     idLoja = db.Column(db.Integer,
                        primary_key=True)
 
-    Projeto_idProjeto = db.Column(db.Integer,
-                                  db.ForeignKey('Projeto.idProjeto'))
-
     dataAbertura = db.Column(db.DateTime,
                              unique=False,
                              nullable=False,
-                             index=False,
                              default=datetime.datetime.now())
 
     dataFechamento = db.Column(db.DateTime,
                                unique=False,
-                               nullable=False,
-                               index=False)
+                               nullable=False)
 
-    item = db.relationship('Item', backref='item')
+    item = db.relationship('Item', backref='loja')
+    grupo = db.relationship('Grupo', backref='loja')
 
 
 class ItemTable(db.Model):
@@ -100,55 +86,50 @@ class ItemTable(db.Model):
     Loja_idLoja = db.Column(db.Integer,
                             db.ForeignKey('Loja.idLoja'))
 
+    Raridade_idRaridade = db.Column(db.Integer,
+                                    db.ForeignKey('Raridade.idRaridade'))
+
     nome = db.Column(db.String(50),
                      unique=True,
-                     nullable=False,
-                     index=False)
+                     nullable=False)
 
     descricao = db.Column(db.String(100),
                           unique=False,
-                          nullable=False,
-                          index=False)
+                          nullable=False)
 
     valor = db.Column(db.Integer,
                       unique=False,
-                      nullable=False,
-                      index=False)
+                      nullable=False)
 
 
-class ProjetoTable(db.Model):
-    __tablename__ = 'Projeto'
+class GrupoTable(db.Model):
+    __tablename__ = 'Grupo'
 
-    idProjeto = db.Column(db.Integer,
-                          primary_key=True)
+    idGrupo = db.Column(db.Integer,
+                        primary_key=True)
 
-    loja = db.relationship('Loja', backref="projeto")
+    Loja_idLoja = db.Column(db.Integer,
+                            db.ForeignKey('Loja.idLoja'))
 
-    dataAbertura = db.Column(db.DateTime,
-                             unique=False,
-                             nullable=False,
-                             index=False,
-                             default=datetime.datetime.now())
+    dataCriacao = db.Column(db.DateTime,
+                            unique=False,
+                            nullable=False,
+                            default=datetime.datetime.now())
 
-    dataFechamento = db.Column(db.DateTime,
-                               unique=False,
-                               nullable=False,
-                               index=False)
+    dataEncerramento = db.Column(db.DateTime,
+                                 unique=False,
+                                 nullable=False)
 
-    titulo = db.Column(db.String(50),
-                       unique=False,
-                       nullable=False,
-                       index=False)
+    nome = db.Column(db.String(50),
+                     unique=False,
+                     nullable=False)
 
     descricao = db.Column(db.String(100),
                           unique=False,
-                          nullable=False,
-                          index=False)
+                          nullable=False)
 
-    prazo = db.Column(db.DateTime,
-                      unique=False,
-                      nullable=True,
-                      index=False)
+    usuario_grupo = db.relationship(
+        'usuario_grupo', backref="usuario")
 
 
 class TarefaTable(db.Model):
@@ -157,9 +138,9 @@ class TarefaTable(db.Model):
     idTarefa = db.Column(db.Integer,
                          primary_key=True)
 
-    Projeto_idProjeto = db.Column(db.Integer,
-                                  db.ForeignKey('Projeto.idProjeto'),
-                                  nullable=True)
+    Grupo_idGrupo = db.Column(db.Integer,
+                              db.ForeignKey('Grupo.idGrupo'),
+                              nullable=True)
 
     Raridade_idRaridade = db.Column(db.Integer,
                                     db.ForeignKey('Raridade.idRaridade'))
@@ -172,95 +153,88 @@ class TarefaTable(db.Model):
     dataAbertura = db.Column(db.DateTime,
                              unique=False,
                              nullable=False,
-                             index=False,
                              default=datetime.datetime.now())
 
     nome = db.Column(db.String(100),
                      unique=True,
-                     nullable=False,
-                     index=False)
+                     nullable=False)
 
     descricao = db.Column(db.String(100),
                           unique=False,
-                          nullable=False,
-                          index=False)
+                          nullable=False)
 
     prazo = db.Column(db.DateTime,
                       unique=False,
-                      nullable=False,
-                      index=False)
+                      nullable=False)
 
     recompensa = db.Column(db.Integer,
                            unique=True,
-                           nullable=False,
-                           index=False)
+                           nullable=False)
 
     status = db.Column(db.Boolean,
                        unique=False,
-                       nullable=True,
-                       index=False)
+                       nullable=True)
+
+    usuario_tarefa = db.relationship(
+        'usuario_tarefa', backref="tarefa")
 
 
 class UsuarioTable(db.Model):
     """
     Classe model responsavel pelos dados do usuario
     """
-    
+
     __tablename__ = 'Usuario'
+
     idUsuario = db.Column(db.Integer,
                           primary_key=True)
 
-    TipoUsuario_idTipoUsuario = db.Column(db.Integer,
-                                          db.ForeignKey(
-                                              'TipoUsuario.idTipoUsuario'),
-                                          default=0)
-
     nome = db.Column(db.String(80),
                      unique=False,
-                     nullable=False,
-                     index=False)
+                     nullable=False)
 
     email = db.Column(db.String(60),
                       unique=True,
-                      nullable=False,
-                      index=True)
+                      nullable=False)
+
+    cargo = db.Column(db.String(50),
+                        unique=False,
+                        nullable=True)
 
     dataCriacao = db.Column(db.DateTime,
                             unique=False,
                             nullable=False,
-                            index=False,
                             default=datetime.datetime.now())
 
     codigoConfirmacao = db.Column(db.String(50),
                                   unique=False,
-                                  nullable=False,
-                                  )
+                                  nullable=False)
 
     senha = db.Column(db.String(250),
                       unique=False,
-                      nullable=False,
-                      index=False)
+                      nullable=False)
 
-    pontos = db.Column(db.Integer,
-                       unique=False,
-                       nullable=True,
-                       index=False,)
+    credito = db.Column(db.Integer,
+                        unique=False,
+                        nullable=True,)
 
-    usuario_projeto = db.relationship(
-        'usuario_projeto', backref="usuario_projeto")
+    usuario_grupo = db.relationship(
+        'usuario_grupo', backref="usuario")
 
-    usuario_projeto = db.relationship(
-        'usuario_tarefa', backref="usuario_tarefa")
+    usuario_tarefa = db.relationship(
+        'usuario_tarefa', backref="usuario")
 
 
-usuario_projeto = db.Table('usuario_projeto',
-                           db.Column('idUsuarioProjeto', db.Integer,
-                                     primary_key=True),
-                           db.Column('Usuario_idUsuario', db.Integer,
-                                     db.ForeignKey('Usuario.idUsuario')),
+usuario_grupo = db.Table('usuario_grupo',
+                         db.Column('idUsuarioGrupo', db.Integer,
+                                   primary_key=True),
+                         db.Column('Usuario_idUsuario', db.Integer,
+                                   db.ForeignKey('Usuario.idUsuario')),
 
-                           db.Column('Projeto_idTarefa', db.Integer,
-                                     db.ForeignKey('Projeto.idProjeto')))
+                         db.Column('Grupo_idGrupo', db.Integer,
+                                   db.ForeignKey('Grupo.idGrupo'))
+
+                         )
 
 usuario_tarefa = db.Table('usuario_tarefa',
                           db.Column('idUsuarioTarefa', db.Integer,
