@@ -40,7 +40,7 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 ### Usuario
 - [x] Index(Mostrar todos "read")
 - [x] Create(Criar novo "create")
-- [] Show(Mostar um espeficio "read")
+- [x] Show(Mostar um espeficio "read")
 - [x] Update(Editar um espefico "update")
 - [x] Destroy(Deletar um especifico "delete")
 - [] Show task per user
