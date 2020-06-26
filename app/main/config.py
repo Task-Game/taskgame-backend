@@ -15,7 +15,7 @@ class Development(BaseConfig):
     PORT = 5050
     DEBUG = True
 
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senhasenha@locahost:3306/taskGame'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senhasenha@localhost:3306/taskGame'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class Testing(BaseConfig):
@@ -26,7 +26,7 @@ class Testing(BaseConfig):
     DEBUG = True
     TESTING = True
 
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senhasenha@locahost:3306/taskGame'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senhasenha@localhost:3306/taskGame'
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

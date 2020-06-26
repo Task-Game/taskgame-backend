@@ -1,5 +1,6 @@
-from .. import db, flask_bcrypt
+from ..create_app import db, flask_bcrypt
 import  hashlib
+from datetime import datetime
 
 
 class User(db.Model):
@@ -19,7 +20,7 @@ class User(db.Model):
     cargo = db.Column(db.String(50), unique=False, nullable=True)
 
     dataCriacao = db.Column(db.DateTime, unique=False, nullable=False,
-                            default=datetime.datetime.now())
+                            default=datetime.now())
 
     codigoConfirmacao = db.Column(db.String(50), unique=False, nullable=False)
 
