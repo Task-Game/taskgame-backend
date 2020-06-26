@@ -5,7 +5,7 @@ class BaseConfig(object):
     """
 
     ORIGINS = ["*"] # Para chamadas da API
-    SECRET_KEY = 'eu_gosto_de_bts' # Chave de validação
+    SECRET_KEY = 'eu_amo_de_bts' # Chave de validação
 
 class Development(BaseConfig):
     """
