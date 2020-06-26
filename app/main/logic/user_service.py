@@ -51,8 +51,8 @@ def index_user():
         }
         return response_object, 400
 
-def update_user(data):
-    user = User.query.get(data['idUsuario'])
+def update_user(idUsuario):
+    user = User.query.filter_by(idUsuario=idUsuario).first()
     if user:
         for key, value in data:
             if key is not 'idUsuario':
@@ -70,14 +70,27 @@ def update_user(data):
         }
         return response_object, 400
 
-def delete_user(data):
-    user = User.query.get(data['idUsuario'])
+def delete_user(idUsuario):
+    user = User.query.filter_by(idUsuario=idUsuario).first()
     if user:
         db.session.delete(user)
         db.session.commit()
+        response_object = {
+            'status': 'success',
+            'message': 'Successfully deleted'
+        }
+        return response_object,  200
+    else:
+        response_object = {
+            'status':'fail',
+            'message':'Fail delete'
+        }
+        return response_object, 400
 
-def show_user(data):
-    response_data = User.query.get(data['idUsuario'])
+
+def show_user(idUsuario):
+    response_data = User.query.filter_by(idUsuario=idUsuario).first()
+
     if response_data:
         response_object = {
             'status': 'success',
