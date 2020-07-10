@@ -19,7 +19,7 @@ def create_new_user(data):
             email=data['email'],
             cargo=data['cargo'],
             dataCriacao=datetime.datetime.now(),
-            codigoConfirmacao='000111222',
+            codigoConfirmacao='000111222', # NOTE: alterar p/ codigo gerado aleatoriamente
             senha=data['senha'],
             credito=0
         )
