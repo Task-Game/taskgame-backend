@@ -8,7 +8,7 @@ api = UserDto.api
 _user = UserDto.user
 
 
-@api.route('/api/v1/users')
+@api.route('/api/v1/user')
 class UserCreateIndex(Resource):
 
     @api.doc("Listar todos os usuarios")
@@ -30,7 +30,7 @@ class UserCreateIndex(Resource):
         return create_new_user(data=data)
 
 
-@api.route('/api/v1/users/<user_id>')
+@api.route('/api/v1/user/<user_id>')
 @api.param('idUser', 'Identificacão do usuario')
 @api.response(404, 'User not found')
 class UserWithParam(Resource):
