@@ -51,7 +51,7 @@ def index_user():
         }
         return response_object, 400
 
-def update_user(idUsuario):
+def update_user(idUsuario, data):
     user = User.query.filter_by(idUsuario=idUsuario).first()
     if user:
         for key, value in data:
