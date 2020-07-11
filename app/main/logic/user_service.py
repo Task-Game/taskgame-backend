@@ -1,7 +1,7 @@
 import uuid
 import datetime
 
-from app.main import db
+from app.main.create_app import db 
 from app.main.model.user import User
 
 

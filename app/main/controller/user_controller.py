@@ -11,7 +11,6 @@ _user = UserDto.user
 @api.route('/api/v1/users')
 class UserCreateIndex(Resource):
 
-    @api.route(methods=['GET'])
     @api.doc("Listar todos os usuarios")
     @api.marshal_list_with(_user, envelope='data')
     def get(self):
@@ -23,7 +22,7 @@ class UserCreateIndex(Resource):
     @api.response(201, "Usuario criado com sucesso.")
     @api.doc('Criar novo usuario')
     @api.expect(_user, validate=True)
-    def create(self):
+    def post(self):
         """
         Criar novo usuario (create)
         """
@@ -38,7 +37,7 @@ class UserWithParam(Resource):
     @api.doc("Atualizar usuario")
     def patch(self, idUsuario):
         """
-        Atualiza o usuario passado por id
+        Atualiza o usuario passado por id (update)
         """
 
         data = request.json
@@ -52,7 +51,7 @@ class UserWithParam(Resource):
     @api.doc("Delete usuario")
     def delete(self, idUsuario):
         """
-        Delete  o usuario passado via id
+        Delete o usuario passado via id(delete)
         """
 
         user = show_user(idUsuario=idUsuario)
