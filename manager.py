@@ -3,7 +3,7 @@ import unittest
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app.main.create_app import create_app, db
-from app.main.model import user
+from app.main.model import user, group, item, secundary_tables, store, task
 from app import blueprint
 
 

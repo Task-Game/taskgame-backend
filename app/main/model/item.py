@@ -13,7 +13,6 @@ class ItemTable(db.Model):
                                     db.ForeignKey('Raridade.idRaridade'))
 
     nome = db.Column(db.String(50),
-                     unique=True,
                      nullable=False)
 
     descricao = db.Column(db.String(100),

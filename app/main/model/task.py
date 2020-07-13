@@ -1,4 +1,5 @@
 from ..create_app import db
+from datetime import datetime
 
 
 class TarefaTable(db.Model):
@@ -16,16 +17,14 @@ class TarefaTable(db.Model):
 
     Frequencia_idFrequencia = db.Column(db.Integer,
                                         db.ForeignKey(
-                                            'Frequencia.idFrequencia'),
-                                        nullable=True)
+                                            'Frequencia.idFrequencia'))
 
     dataAbertura = db.Column(db.DateTime,
                              unique=False,
                              nullable=False,
-                             default=datetime.datetime.now())
+                             default=datetime.now())
 
     nome = db.Column(db.String(100),
-                     unique=True,
                      nullable=False)
 
     descricao = db.Column(db.String(100),
@@ -37,7 +36,6 @@ class TarefaTable(db.Model):
                       nullable=False)
 
     recompensa = db.Column(db.Integer,
-                           unique=True,
                            nullable=False)
 
     status = db.Column(db.Boolean,

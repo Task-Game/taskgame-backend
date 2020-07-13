@@ -1,4 +1,5 @@
 from ..create_app import db
+from datetime import datetime
 
 
 class LojaTable(db.Model):
@@ -10,7 +11,7 @@ class LojaTable(db.Model):
     dataAbertura = db.Column(db.DateTime,
                              unique=False,
                              nullable=False,
-                             default=datetime.datetime.now())
+                             default=datetime.now())
 
     dataFechamento = db.Column(db.DateTime,
                                unique=False,

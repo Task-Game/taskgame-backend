@@ -1,4 +1,5 @@
 from ..create_app import db
+from datetime import datetime
 
 
 class GrupoTable(db.Model):
@@ -13,7 +14,7 @@ class GrupoTable(db.Model):
     dataCriacao = db.Column(db.DateTime,
                             unique=False,
                             nullable=False,
-                            default=datetime.datetime.now())
+                            default=datetime.now())
 
     dataEncerramento = db.Column(db.DateTime,
                                  unique=False,
