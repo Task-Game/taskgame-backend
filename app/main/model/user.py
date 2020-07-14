@@ -1,5 +1,5 @@
 from ..create_app import db, flask_bcrypt
-import  hashlib
+import hashlib
 from datetime import datetime
 
 
@@ -33,12 +33,11 @@ class User(db.Model):
 
     usuario_tarefa = db.relationship(
         'usuario_tarefa', backref="usuario")
-    
 
     @property
     def senha(self):
         raise AttributeError('senha: write-only fild')
-    
+
     @senha.setter
     def senha(self, senha):
         self.senha = flask_bcrypt.generate_password_hash(senha).decode('utf-8')
