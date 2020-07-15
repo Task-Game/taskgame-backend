@@ -1,5 +1,6 @@
 from ..create_app import db
-
+from .user import *
+from .store import LojaTable
 
 class FrequenciaTable(db.Model):
     __tablename__ = "Frequencia"
@@ -11,7 +12,7 @@ class FrequenciaTable(db.Model):
                           nullable=False)
 
     # A chave desta tabela esta na que se refere
-    tarefa = db.relationship('Tarefa', backref="frequencia")
+    tarefa = db.relationship('TarefaTable', backref="frequencia")
 
 
 class RaridadeTable(db.Model):
@@ -29,9 +30,9 @@ class RaridadeTable(db.Model):
                            nullable=False)
 
     # O id raridade esta na tabela tarefa
-    tarefa = db.relationship('Tarefa', backref="raridade")
+    tarefa = db.relationship('TarefaTable', backref="raridade")
     # O id raridade esta na tabela item
-    item = db.relationship('Item', backref="raridade")
+    item = db.relationship('ItemTable', backref="raridade")
 
 
 class ChecklistTable(db.Model):
@@ -54,31 +55,4 @@ class ChecklistTable(db.Model):
                       nullable=False)
 
     def check_token(self):
-        return feito
-
-
-usuario_grupo = db.Table('usuario_grupo',
-                         db.Column('idUsuarioGrupo', db.Integer,
-                                   primary_key=True),
-                         db.Column('Usuario_idUsuario', db.Integer,
-                                   db.ForeignKey('Usuario.idUsuario'),
-                                   nullable=False),
-
-                         db.Column('Grupo_idGrupo', db.Integer,
-                                   db.ForeignKey('Grupo.idGrupo'),
-                                   nullable=False)
-
-                         )
-
-usuario_tarefa = db.Table('usuario_tarefa',
-                          db.Column('idUsuarioTarefa', db.Integer,
-                                    primary_key=True),
-
-                          db.Column('Usuario_idUsuario', db.Integer,
-                                    db.ForeignKey('Usuario.idUsuario'),
-                                    nullable=False),
-
-                          db.Column('Tarefa_idTarefa', db.Integer,
-                                    db.ForeignKey('Tarefa.idTarefa'),
-                                    nullable=False)
-                          )
+        return 'mec'

@@ -42,7 +42,7 @@ class Production(BaseConfig):
 # Se tiver a de produão tem q colocar aqui tbm
 
 config_by_name = dict(
-    dev=Development,
+    development=Development,
     testing=Testing,
     production=Production
 )

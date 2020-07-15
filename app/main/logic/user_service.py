@@ -2,7 +2,7 @@ import uuid
 import datetime
 
 from app.main.create_app import db 
-from app.main.model.user import User
+from app.main.model.user import UserTable
 
 
 def create_new_user(data):
@@ -12,9 +12,9 @@ def create_new_user(data):
         passado via request
     """
 
-    user = User.query.filter_by(email=data['email']).first()
+    user = UserTable.query.filter_by(email=data['email']).first()
     if not user:
-        new_user = User(
+        new_user = UserTable(
             nome=data['nome'],
             email=data['email'],
             cargo=data['cargo'],
@@ -37,7 +37,7 @@ def create_new_user(data):
         return response_object, 409
 
 def index_user():
-    response_data = User.query.all()
+    response_data = UserTable.query.all()
     if response_data:
         response_object = {
             'status': 'success',
@@ -52,7 +52,7 @@ def index_user():
         return response_object, 400
 
 def update_user(idUsuario, data):
-    user = User.query.filter_by(idUsuario=idUsuario).first()
+    user = UserTable.query.filter_by(idUsuario=idUsuario).first()
     if user:
         for key, value in data:
             if key is not 'idUsuario':
@@ -71,7 +71,7 @@ def update_user(idUsuario, data):
         return response_object, 400
 
 def delete_user(idUsuario):
-    user = User.query.filter_by(idUsuario=idUsuario).first()
+    user = UserTable.query.filter_by(idUsuario=idUsuario).first()
     if user:
         db.session.delete(user)
         db.session.commit()
@@ -89,7 +89,7 @@ def delete_user(idUsuario):
 
 
 def show_user(idUsuario):
-    response_data = User.query.filter_by(idUsuario=idUsuario).first()
+    response_data = UserTable.query.filter_by(idUsuario=idUsuario).first()
 
     if response_data:
         response_object = {

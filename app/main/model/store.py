@@ -1,5 +1,7 @@
 from ..create_app import db
 from datetime import datetime
+from .user import *
+from .secondary_tables import *
 
 
 class LojaTable(db.Model):
@@ -17,7 +19,7 @@ class LojaTable(db.Model):
                                unique=False,
                                nullable=False)
 
-    item = db.relationship('Item', backref='loja')
-    grupo = db.relationship('Grupo', backref='loja')
+    item = db.relationship('ItemTable', backref='loja')
+    grupo = db.relationship('GrupoTable', backref='loja')
 
 

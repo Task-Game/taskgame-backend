@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 198371046dd1
+Revision ID: 7529365ab2a0
 Revises: 
-Create Date: 2020-07-13 20:30:47.648604
+Create Date: 2020-07-14 21:40:27.003692
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '198371046dd1'
+revision = '7529365ab2a0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,7 +35,6 @@ def upgrade():
     sa.Column('recompensa', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('idRaridade')
     )
-    op.create_index(op.f('ix_Raridade_recompensa'), 'Raridade', ['recompensa'], unique=False)
     op.create_table('Usuario',
     sa.Column('idUsuario', sa.Integer(), nullable=False),
     sa.Column('nome', sa.String(length=80), nullable=False),
@@ -66,8 +65,7 @@ def upgrade():
     sa.Column('valor', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['Loja_idLoja'], ['Loja.idLoja'], ),
     sa.ForeignKeyConstraint(['Raridade_idRaridade'], ['Raridade.idRaridade'], ),
-    sa.PrimaryKeyConstraint('idItem'),
-    sa.UniqueConstraint('nome')
+    sa.PrimaryKeyConstraint('idItem')
     )
     op.create_table('Tarefa',
     sa.Column('idTarefa', sa.Integer(), nullable=False),
@@ -83,9 +81,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['Frequencia_idFrequencia'], ['Frequencia.idFrequencia'], ),
     sa.ForeignKeyConstraint(['Grupo_idGrupo'], ['Grupo.idGrupo'], ),
     sa.ForeignKeyConstraint(['Raridade_idRaridade'], ['Raridade.idRaridade'], ),
-    sa.PrimaryKeyConstraint('idTarefa'),
-    sa.UniqueConstraint('nome'),
-    sa.UniqueConstraint('recompensa')
+    sa.PrimaryKeyConstraint('idTarefa')
     )
     op.create_table('usuario_grupo',
     sa.Column('idUsuarioGrupo', sa.Integer(), nullable=False),
@@ -123,7 +119,6 @@ def downgrade():
     op.drop_table('Item')
     op.drop_table('Grupo')
     op.drop_table('Usuario')
-    op.drop_index(op.f('ix_Raridade_recompensa'), table_name='Raridade')
     op.drop_table('Raridade')
     op.drop_table('Loja')
     op.drop_table('Frequencia')
