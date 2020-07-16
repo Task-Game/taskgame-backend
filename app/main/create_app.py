@@ -16,8 +16,8 @@ def create_app(config_name):
 
     """ Cors settings will be here. We maybe use this endpoint later. """
     cors = CORS(app, resources={
-        r'/api/*': {
-            'origins': BaseConfig.ORIGINS
+        r"/*": {
+            'origins': "*"
         }
     })
 

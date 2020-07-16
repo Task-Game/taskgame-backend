@@ -4,7 +4,7 @@ class BaseConfig(object):
     ser usados por produção e desenvolvimento
     """
 
-    ORIGINS = ["*"] # Para chamadas da API
+    ORIGINS = "*" # Para chamadas da API
     SECRET_KEY = 'eu_amo_de_bts' # Chave de validação
 
 class Development(BaseConfig):
