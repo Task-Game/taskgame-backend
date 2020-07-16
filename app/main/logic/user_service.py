@@ -1,6 +1,5 @@
 import uuid
 import datetime
-import json
 
 from app.main.create_app import db
 from app.main.model.main_models import UserTable

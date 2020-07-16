@@ -3,13 +3,34 @@ from flask_restplus import Namespace, fields
 
 class UserDto:
     api = Namespace(
-        'user', description='Operacoes relacionadas com o "Usuario"')
+        'user', description='Operacoes relacionadas com o "Usuário"')
     user = api.model('user', {
-        'idUsuario': fields.Integer(required=False, description='Id do usuario'), 
-        'nome': fields.String(required=False, description='Nome do usuario'),# NOTE: Verificar se existe no corpo da requisicão
-        'email': fields.String(required=False, description='Email do usuario'), # NOTE: Verificar se existe no corpo da requisicão
-        'dataCriacao':fields.DateTime(required=False, description='Data de criacao do usuario'),
+        'idUsuario': fields.Integer(required=False, description='Id do usuario'),
+        # TODO: Verificar se existe no corpo da requisicão
+        'nome': fields.String(required=False, description='Nome do usuario'),
+        # TODO: Verificar se existe no corpo da requisicão
+        'email': fields.String(required=False, description='Email do usuario'),
+        'dataCriacao': fields.DateTime(required=False, description='Data de criacao do usuario'),
         'cargo': fields.String(required=False, description='Cargo do usuario'),
-        'credito': fields.Integer(required=False, description='creditos do usuario'),
-        'senha': fields.String(required=False, description='Senha do usuario'), # NOTE: Verificar se existe no corpo da requisicão
+        'credito': fields.Integer(required=False, description='créditos do usuario'),
+        # TODO: Verificar se existe no corpo da requisicão
+        'senha': fields.String(required=False, description='Senha do usuario'),
+    })
+
+
+class TaskDto:
+    api = Namespace(
+        'task', description='Operacoes relacionadas com a "Tarefa"'
+    )
+    # TODO: Fazer a verificacao dos parametros: idTarefa, Nome, Data Abertura, Descicao, Status
+    task = api.model('task', {
+        'idTarefa': fields.Integer(required=False, description='Id referente a tarefa'),
+        'Frequencia_idFrequencia': fields.Integer(required=False, description='Id da frequencia relacionada a tarefa'),
+        'Raridade_idRaridadee': fields.Integer(required=False, description='Id da raridade referente a tarefa'),
+        'dataAbertura': fields.Datetime(required=False, description='Data de abertura ta tarefa'),
+        'nome': fields.String(required=False, description='Titulo da tarefa'),
+        'descricao': fields.String(required=False, description='Descricao da tarefa'),
+        'prazo': fields.DateTime(required=False, description='Prazo da tarefa'),
+        'recompensa': fields.Integer(required=False, description='Recompensa da tarefa'),
+        'status': fields.Boolean(required=False, description='Status da tarefa'),
     })
