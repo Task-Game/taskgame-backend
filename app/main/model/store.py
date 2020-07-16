@@ -1,6 +1,6 @@
 from ..create_app import db
 from datetime import datetime
-from .user import *
+from .main_models import *
 from .secondary_tables import *
 
 

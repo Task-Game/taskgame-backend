@@ -3,7 +3,7 @@ import datetime
 import json
 
 from app.main.create_app import db
-from app.main.model.user import UserTable
+from app.main.model.main_models import UserTable
 
 
 def create_new_user(data):
