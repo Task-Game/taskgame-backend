@@ -31,44 +31,46 @@ class UserCreateIndex(Resource):
 
 
 @api.route('/api/v1/user/<user_id>')
-@api.param('idUser', 'Identificacão do usuario')
+@api.param('user_id', 'Identificacão do usuario')
 @api.response(404, 'User not found')
 class UserWithParam(Resource):
+
     @api.doc("Atualizar usuario")
-    def patch(self, idUsuario):
+    @api.expect(_user, validate=True)
+    def patch(self, user_id):
         """
         Atualiza o usuario passado por id (update)
         """
 
         data = request.json
-        user = show_user(idUsuario=idUsuario)
+        user = show_user(idUsuario=user_id)
 
         if not user:
             api.abort(404)
         else:
-            return update_user(idUsuario=idUsuario, data=data)
+            return update_user(idUsuario=user_id, data=data)
 
     @api.doc("Delete usuario")
-    def delete(self, idUsuario):
+    def delete(self, user_id):
         """
         Delete o usuario passado via id(delete)
         """
 
-        user = show_user(idUsuario=idUsuario)
+        user = show_user(idUsuario=user_id)
 
         if not user:
             api.abort(404)
         else:
-            return delete_user(idUsuario=idUsuario)
+            return delete_user(idUsuario=user_id)
 
     @api.doc("Mostar usuario especifico")
     @api.marshal_with(_user)
-    def get(self, idUsuario):
+    def get(self, user_id):
         """
         Buscar  usuario especifico de acordo com o id
         """
 
-        user = show_user(idUsuario=Idusuario)
+        user = show_user(idUsuario=user_id)
         if not user:
             api.abort(404)
         else:
