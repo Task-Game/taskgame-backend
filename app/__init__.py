@@ -3,6 +3,7 @@ from flask import Blueprint
 
 from .main.controller.user_controller import api as user_namespace
 
+
 blueprint = Blueprint('api', __name__)
 
 api = Api(blueprint,

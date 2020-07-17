@@ -1,5 +1,5 @@
 from ..create_app import db
-from .user import *
+from .main_models import *
 from .store import LojaTable
 
 class FrequenciaTable(db.Model):
