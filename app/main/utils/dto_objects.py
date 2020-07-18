@@ -27,10 +27,24 @@ class TaskDto:
         'idTarefa': fields.Integer(required=False, description='Id referente a tarefa'),
         'Frequencia_idFrequencia': fields.Integer(required=False, description='Id da frequencia relacionada a tarefa'),
         'Raridade_idRaridadee': fields.Integer(required=False, description='Id da raridade referente a tarefa'),
-        'dataAbertura': fields.Datetime(required=False, description='Data de abertura ta tarefa'),
+        'dataAbertura': fields.DateTime(required=False, description='Data de abertura ta tarefa'),
         'nome': fields.String(required=False, description='Titulo da tarefa'),
         'descricao': fields.String(required=False, description='Descricao da tarefa'),
         'prazo': fields.DateTime(required=False, description='Prazo da tarefa'),
         'recompensa': fields.Integer(required=False, description='Recompensa da tarefa'),
         'status': fields.Boolean(required=False, description='Status da tarefa'),
+    })
+
+class GroupDto:
+    api = Namespace(
+        'group', description='Operacoes relacionadas com o "Grupo"'
+    )
+
+    group = api.model('group',{
+        'idGrupo': fields.Integer(required=False, description='Id referente ao grupo'),
+        'Loja_idLoja': fields.Integer(required=False, description='Id referente a loja'),
+        'dataCriacao': fields.DateTime(required=False, description='Data da criacão do grupo'),
+        'dataEncerramento': fields.DateTime(required=False, description='Data de encerramento do grupo'),
+        'nome': fields.String(required=False, descriptio='Nome do grupo'),
+        'descricao': fields.String(required=False, description='Descricao do grupo')
     })
