@@ -28,12 +28,12 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 3. python manager.py db upgrade 
 
 ## Rotas
-### Projetos
-- [] Index(Mostrar todos)
-- [] Create(Criar novo)
-- [] Show(Mostar um espeficio)
-- [] Update(Editar um espefico)
-- [] Destroy(Deletar um especifico)
+### Grupo
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
 - [] Show user per project
 
 ### Usuario
@@ -45,11 +45,11 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [] Show task per user
 
 ### Tarefas
-- [] Index(Mostrar todos)
-- [] Create(Criar novo)
-- [] Show(Mostar um espeficio)
-- [] Update(Editar um espefico)
-- [] Destroy(Deletar um especifico)
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
 - [] Show user in task
 
 ### Item
