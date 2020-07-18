@@ -11,7 +11,7 @@ _task = TaskDto.task
 @api.route('/api/v1/task')
 class TaskCreateIndex(Resource):
     @api.doc('Retorna todas as tarefas')
-    @api.marshal_list_with(_task, envelop='data')
+    @api.marshal_list_with(_task, envelope='data')
     def get(self):
         """
         Retorna todas as tarefas registradas no banco (index/read)
@@ -41,9 +41,9 @@ class TaskWithParam(Resource):
         Atualiza dados da tarefa (update)
         """
         data = request.json
-        user = show_task(idTarefa=task_id)
+        task = show_task(idTarefa=task_id)
 
-        if not user:
+        if not task:
             api.abort(404)
             return "Task don't exists"
         else:
@@ -51,7 +51,10 @@ class TaskWithParam(Resource):
 
     @api.doc('Deletar tarefa')
     def delete(self, task_id):
-        user = show_task(idTarefa=task_id)
+        """
+        Deletar tarefa via idTarefa (delete)
+        """
+        task = show_task(idTarefa=task_id)
 
         if not task:
             api.abort(404)
@@ -63,7 +66,7 @@ class TaskWithParam(Resource):
     @api.marshal_with(_task)
     def get(self, task_id):
         """
-        Buscar usuario especifico (show)
+        Buscar tarefa especifico (show)
         """
 
         task = show_task(idTarefa=task_id)

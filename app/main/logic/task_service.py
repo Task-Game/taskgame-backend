@@ -74,13 +74,13 @@ def delete_task(idTarefa):
         }
         return response_object, 400
 
-
+ 
 def show_task(idTarefa):
     return TarefaTable.query.filter_by(idTarefa=idTarefa).first()
 
 
 def get_status(idTarefa):
-    return TarefaTable.query(TarefaTable.status).filter_b(idTarefa=idTarefa).first()
+    return TarefaTable.query(TarefaTable.status).filter_by(idTarefa=idTarefa).first()
 
 
 def __save_changes(data):
