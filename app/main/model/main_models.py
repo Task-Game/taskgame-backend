@@ -88,9 +88,6 @@ class TarefaTable(db.Model):
                       unique=False,
                       nullable=False)
 
-    recompensa = db.Column(db.Integer,
-                           nullable=False)
-
     status = db.Column(db.Boolean,
                        unique=False,
                        nullable=True)

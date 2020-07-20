@@ -26,12 +26,11 @@ class TaskDto:
     task = api.model('task', {
         'idTarefa': fields.Integer(required=False, description='Id referente a tarefa'),
         'Frequencia_idFrequencia': fields.Integer(required=False, description='Id da frequencia relacionada a tarefa'),
-        'Raridade_idRaridadee': fields.Integer(required=False, description='Id da raridade referente a tarefa'),
+        'Raridade_idRaridade': fields.Integer(required=False, description='Id da raridade referente a tarefa'),
         'dataAbertura': fields.DateTime(required=False, description='Data de abertura ta tarefa'),
         'nome': fields.String(required=False, description='Titulo da tarefa'),
         'descricao': fields.String(required=False, description='Descricao da tarefa'),
         'prazo': fields.DateTime(required=False, description='Prazo da tarefa'),
-        'recompensa': fields.Integer(required=False, description='Recompensa da tarefa'),
         'status': fields.Boolean(required=False, description='Status da tarefa'),
     })
 

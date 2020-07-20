@@ -76,7 +76,7 @@ class TaskWithParam(Resource):
             return task
 
 
-@api.route('/api/v1/task/utils/<task_id>')
+@api.route('/api/v1/task/status/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'Task not found')
 class TaskUtils(Resource):
