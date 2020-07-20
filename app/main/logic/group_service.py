@@ -5,6 +5,7 @@ from app.main.model.main_models import GrupoTable
 
 
 def create_new_group(data):
+    now = datetime.datetime.now()
     """
         Cria novo  grupo
         param: data = dict/json com as informacoes do grupo 
@@ -17,7 +18,7 @@ def create_new_group(data):
             idGrupo=data['idGrupo'],
             Loja_idLoja=data['Loja_idLoja'],
             dataCriacaO=datetime.datetime.now(),
-            dataEncerramento=data['dataEncerramento'],
+            dataEncerramento=now + datetime.timedelta(hours=24),
             nome=data['nome'],
             descricao=data['descricao']
         )
