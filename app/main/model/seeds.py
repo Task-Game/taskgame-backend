@@ -1,4 +1,6 @@
 from app.main.model.secondary_tables import RaridadeTable, FrequenciaTable
+from ..create_app import db
+from sqlalchemy import insert
 
 SEED_DATA_FREQUENCIA = [
     {
@@ -54,39 +56,6 @@ SEED_DATA_RARIDADE = [
 
 
 def make_seed():
-    frequency_unique = FrequenciaTable(
-        descricao='Unico'
-    ).save()
-    frequency_daily = FrequenciaTable(
-        descricao='Diario'
-    ).save()
-    frequency_weekly = FrequenciaTable(
-        descricao='Semanal'
-    ).save()
-    frequency_fortnightly = FrequenciaTable(
-        descricao='Quinzenal'
-    ).save()
-    frequency_monthly = FrequenciaTable(
-        descricao='Mensal'
-    ).save()
+    db.session.insert(FrequenciaTable).values(SEED_DATA_FREQUENCIA)
+    db.session.insert(RaridadeTable).values(SEED_DATA_RARIDADE)
 
-    rarity_comum = RaridadeTable(
-        descricao='Comum',
-        recompensa=50
-    ).save()
-    rarity_incomum = RaridadeTable(
-        descricao='Incomum',
-        recompensa=150
-    ).save()
-    rarity_rare = RaridadeTable(
-        descricao='Raro',
-        recompensa=300
-    ).save()
-    rarity_epic = RaridadeTable(
-        descricao='Épico',
-        recompensa=500
-    ).save()
-    rarity_legendary = RaridadeTable(
-        descricao='Lendario',
-        recompensa=1000
-    ).save()
