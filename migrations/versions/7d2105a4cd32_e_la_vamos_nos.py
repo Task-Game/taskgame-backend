@@ -1,8 +1,8 @@
-"""empty message
+"""e la vamos nos
 
-Revision ID: 7529365ab2a0
+Revision ID: 7d2105a4cd32
 Revises: 
-Create Date: 2020-07-14 21:40:27.003692
+Create Date: 2020-07-21 20:02:48.675079
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7529365ab2a0'
+revision = '7d2105a4cd32'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,8 +25,7 @@ def upgrade():
     )
     op.create_table('Loja',
     sa.Column('idLoja', sa.Integer(), nullable=False),
-    sa.Column('dataAbertura', sa.DateTime(), nullable=False),
-    sa.Column('dataFechamento', sa.DateTime(), nullable=False),
+    sa.Column('dataFechamento', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('idLoja')
     )
     op.create_table('Raridade',
@@ -40,8 +39,9 @@ def upgrade():
     sa.Column('nome', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=60), nullable=False),
     sa.Column('cargo', sa.String(length=50), nullable=True),
-    sa.Column('dataCriacao', sa.DateTime(), nullable=False),
+    sa.Column('dataCriacao', sa.Date(), nullable=False),
     sa.Column('codigoConfirmacao', sa.String(length=50), nullable=False),
+    sa.Column('senha', sa.String(length=80), nullable=True),
     sa.Column('credito', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('idUsuario'),
     sa.UniqueConstraint('email')
@@ -49,8 +49,8 @@ def upgrade():
     op.create_table('Grupo',
     sa.Column('idGrupo', sa.Integer(), nullable=False),
     sa.Column('Loja_idLoja', sa.Integer(), nullable=True),
-    sa.Column('dataCriacao', sa.DateTime(), nullable=False),
-    sa.Column('dataEncerramento', sa.DateTime(), nullable=False),
+    sa.Column('dataCriacao', sa.Date(), nullable=False),
+    sa.Column('dataEncerramento', sa.Date(), nullable=False),
     sa.Column('nome', sa.String(length=50), nullable=False),
     sa.Column('descricao', sa.String(length=100), nullable=False),
     sa.ForeignKeyConstraint(['Loja_idLoja'], ['Loja.idLoja'], ),
@@ -59,12 +59,10 @@ def upgrade():
     op.create_table('Item',
     sa.Column('idItem', sa.Integer(), nullable=False),
     sa.Column('Loja_idLoja', sa.Integer(), nullable=True),
-    sa.Column('Raridade_idRaridade', sa.Integer(), nullable=True),
     sa.Column('nome', sa.String(length=50), nullable=False),
     sa.Column('descricao', sa.String(length=100), nullable=False),
     sa.Column('valor', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['Loja_idLoja'], ['Loja.idLoja'], ),
-    sa.ForeignKeyConstraint(['Raridade_idRaridade'], ['Raridade.idRaridade'], ),
     sa.PrimaryKeyConstraint('idItem')
     )
     op.create_table('Tarefa',
@@ -72,11 +70,11 @@ def upgrade():
     sa.Column('Grupo_idGrupo', sa.Integer(), nullable=True),
     sa.Column('Raridade_idRaridade', sa.Integer(), nullable=True),
     sa.Column('Frequencia_idFrequencia', sa.Integer(), nullable=True),
-    sa.Column('dataAbertura', sa.DateTime(), nullable=False),
+    sa.Column('dataAbertura', sa.Date(), nullable=False),
+    sa.Column('dataConclusao', sa.Date(), nullable=False),
     sa.Column('nome', sa.String(length=100), nullable=False),
     sa.Column('descricao', sa.String(length=100), nullable=False),
-    sa.Column('prazo', sa.DateTime(), nullable=False),
-    sa.Column('recompensa', sa.Integer(), nullable=False),
+    sa.Column('prazo', sa.Date(), nullable=False),
     sa.Column('status', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['Frequencia_idFrequencia'], ['Frequencia.idFrequencia'], ),
     sa.ForeignKeyConstraint(['Grupo_idGrupo'], ['Grupo.idGrupo'], ),

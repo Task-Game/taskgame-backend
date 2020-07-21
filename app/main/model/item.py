@@ -9,9 +9,6 @@ class ItemTable(db.Model):
     Loja_idLoja = db.Column(db.Integer,
                             db.ForeignKey('Loja.idLoja'))
 
-    Raridade_idRaridade = db.Column(db.Integer,
-                                    db.ForeignKey('Raridade.idRaridade'))
-
     nome = db.Column(db.String(50),
                      nullable=False)
 

@@ -32,8 +32,6 @@ class RaridadeTable(db.Model):
 
     # O id raridade esta na tabela tarefa
     tarefa = db.relationship('TarefaTable', backref="raridade")
-    # O id raridade esta na tabela item
-    item = db.relationship('ItemTable', backref="raridade")
 
 
 class ChecklistTable(db.Model):

@@ -35,12 +35,12 @@ class GrupoTable(db.Model):
     Loja_idLoja = db.Column(db.Integer,
                             db.ForeignKey('Loja.idLoja'))
 
-    dataCriacao = db.Column(db.DateTime,
+    dataCriacao = db.Column(db.Date,
                             unique=False,
                             nullable=False,
                             default=datetime.now())
 
-    dataEncerramento = db.Column(db.DateTime,
+    dataEncerramento = db.Column(db.Date,
                                  unique=False,
                                  nullable=False)
 
@@ -72,10 +72,13 @@ class TarefaTable(db.Model):
                                         db.ForeignKey(
                                             'Frequencia.idFrequencia'))
 
-    dataAbertura = db.Column(db.DateTime,
+    dataAbertura = db.Column(db.Date,
                              unique=False,
-                             nullable=False,
-                             default=datetime.now())
+                             nullable=False)
+
+    dataConclusao = db.Column(db.Date,
+                              unique=False,
+                              nullable=False)
 
     nome = db.Column(db.String(100),
                      nullable=False)
@@ -84,7 +87,7 @@ class TarefaTable(db.Model):
                           unique=False,
                           nullable=False)
 
-    prazo = db.Column(db.DateTime,
+    prazo = db.Column(db.Date,
                       unique=False,
                       nullable=False)
 
@@ -111,8 +114,7 @@ class UserTable(db.Model):
 
     cargo = db.Column(db.String(50), unique=False, nullable=True)
 
-    dataCriacao = db.Column(db.DateTime, unique=False, nullable=False,
-                            default=datetime.now())
+    dataCriacao = db.Column(db.Date, unique=False, nullable=False)
 
     codigoConfirmacao = db.Column(db.String(50), unique=False, nullable=False)
 

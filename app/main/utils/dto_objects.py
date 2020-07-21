@@ -10,7 +10,7 @@ class UserDto:
         'nome': fields.String(required=False, description='Nome do usuario'),
         # TODO: Verificar se existe no corpo da requisicão
         'email': fields.String(required=False, description='Email do usuario'),
-        'dataCriacao': fields.DateTime(required=False, description='Data de criacao do usuario'),
+        'dataCriacao': fields.Date(required=False, description='Data de criacao do usuario'),
         'cargo': fields.String(required=False, description='Cargo do usuario'),
         'credito': fields.Integer(required=False, description='créditos do usuario'),
         # TODO: Verificar se existe no corpo da requisicão
@@ -25,12 +25,14 @@ class TaskDto:
     # TODO: Fazer a verificacao dos parametros: idTarefa, Nome, Data Abertura, Descicao, Status
     task = api.model('task', {
         'idTarefa': fields.Integer(required=False, description='Id referente a tarefa'),
+        'Grupo_idGrupo': fields.Integer(required=False, description='Id referente ao grupo em que a tarefa se encontra'),
         'Frequencia_idFrequencia': fields.Integer(required=False, description='Id da frequencia relacionada a tarefa'),
         'Raridade_idRaridade': fields.Integer(required=False, description='Id da raridade referente a tarefa'),
-        'dataAbertura': fields.DateTime(required=False, description='Data de abertura ta tarefa'),
+        'dataAbertura': fields.Date(required=False, description='Data de abertura ta tarefa'),
+        'dataConclusao': fields.Date(required=False, description='Data de conclusao ta tarefa'),
         'nome': fields.String(required=False, description='Titulo da tarefa'),
         'descricao': fields.String(required=False, description='Descricao da tarefa'),
-        'prazo': fields.DateTime(required=False, description='Prazo da tarefa'),
+        'prazo': fields.Date(required=False, description='Prazo da tarefa'),
         'status': fields.Boolean(required=False, description='Status da tarefa'),
     })
 
@@ -42,8 +44,8 @@ class GroupDto:
     group = api.model('group',{
         'idGrupo': fields.Integer(required=False, description='Id referente ao grupo'),
         'Loja_idLoja': fields.Integer(required=False, description='Id referente a loja'),
-        'dataCriacao': fields.DateTime(required=False, description='Data da criacão do grupo'),
-        'dataEncerramento': fields.DateTime(required=False, description='Data de encerramento do grupo'),
+        'dataCriacao': fields.Date(required=False, description='Data da criacão do grupo'),
+        'dataEncerramento': fields.Date(required=False, description='Data de encerramento do grupo'),
         'nome': fields.String(required=False, descriptio='Nome do grupo'),
         'descricao': fields.String(required=False, description='Descricao do grupo')
     })

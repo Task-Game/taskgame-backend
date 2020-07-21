@@ -6,7 +6,7 @@ from app.main.model.main_models import TarefaTable
 from .taskUser_service import *
 
 def create_task(data):
-    now = datetime.datetime.now()
+    now = datetime.datetime.today().strftime('%Y-%m-%d')
     """
         Criar nova task
         @param:  data = dict/json corpo da requisição enviado via post
@@ -20,7 +20,7 @@ def create_task(data):
             dataAbertura=now,
             nome=data['nome'],
             descricao=data['descricao'],
-            prazo=now + datetime.timedelta(hours=24),
+            prazo=now + datetime.timedelta(days=2),
             status=data['status']
         )
         __save_changes(new_task)

@@ -10,12 +10,7 @@ class LojaTable(db.Model):
     idLoja = db.Column(db.Integer,
                        primary_key=True)
 
-    dataAbertura = db.Column(db.DateTime,
-                             unique=False,
-                             nullable=False,
-                             default=datetime.now())
-
-    dataFechamento = db.Column(db.DateTime,
+    dataFechamento = db.Column(db.Date,
                                unique=False,
                                nullable=False)
 
