@@ -2,6 +2,7 @@ from ..create_app import db
 from .main_models import *
 from .store import LojaTable
 
+
 class FrequenciaTable(db.Model):
     __tablename__ = "Frequencia"
 
