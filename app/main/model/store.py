@@ -21,5 +21,3 @@ class LojaTable(db.Model):
 
     item = db.relationship('ItemTable', backref='loja')
     grupo = db.relationship('GrupoTable', backref='loja')
-
-

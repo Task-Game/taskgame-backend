@@ -1,0 +1,5 @@
+Comum = 50 // Branco
+Incomum = 150 // Amarelo
+Raro = 300 // Azul claro
+Épico = 500 // Roxo 
+Lendario = 1000 // Laranja
