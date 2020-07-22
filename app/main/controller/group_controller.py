@@ -8,7 +8,7 @@ api = GroupDto.api
 _group = GroupDto.group
 
 
-@api.route('/api/v1/group')
+@api.route('/')
 class GroupCreateIndex(Resource):
     @api.doc('Retorna todos os grupos')
     @api.marshal_list_with(_group, envelope='data')
@@ -30,7 +30,7 @@ class GroupCreateIndex(Resource):
         return create_new_group(data)
 
 
-@api.route('/api/v1/group/<group_id>')
+@api.route('/<group_id>')
 @api.param('group_id', 'Identificacão da tarefa')
 @api.response(404, 'Group not found')
 class GrupoWithParam(Resource):

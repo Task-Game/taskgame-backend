@@ -8,7 +8,7 @@ api = TaskDto.api
 _task = TaskDto.task
 
 
-@api.route('/api/v1/task')
+@api.route('/')
 class TaskCreateIndex(Resource):
     @api.doc('Retorna todas as tarefas')
     @api.marshal_list_with(_task, envelope='data')
@@ -29,7 +29,7 @@ class TaskCreateIndex(Resource):
         return create_task(data=data)
 
 
-@api.route('/api/v1/task/<task_id>')
+@api.route('/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'Task not found')
 class TaskWithParam(Resource):
