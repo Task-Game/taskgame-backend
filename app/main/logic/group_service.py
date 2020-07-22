@@ -33,10 +33,7 @@ def index_group():
 def update_group(idGrupo, data):
     group = GrupoTable.query.filter_by(idGrupo=idGrupo).first()
     if group:
-        for key, values in data.items():
-            group.key = values
-            db.session.merge(group)
-            db.session.commit()
+        group.query.update(values=data)
         response_object = {
             'status': 'success',
             'message': 'Successfully update'
