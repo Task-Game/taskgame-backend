@@ -16,6 +16,7 @@ def create_task(data):
     task = TarefaTable.query.filter_by(nome=data['nome']).first()
     if not task:
         new_task = TarefaTable(
+            Grupo_idGrupo=data['Grupo_idGrupo'],
             Frequencia_idFrequencia=data['Frequencia_idFrequencia'],
             Raridade_idRaridade=data['Raridade_idRaridade'],
             dataAbertura=now,
