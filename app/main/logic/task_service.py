@@ -5,6 +5,7 @@ from app.main.create_app import db
 from app.main.model.main_models import TarefaTable
 from .taskUser_service import *
 
+
 def create_task(data):
     now = datetime.datetime.today().strftime('%Y-%m-%d')
     """
@@ -24,7 +25,7 @@ def create_task(data):
             status=data['status']
         )
         __save_changes(new_task)
-        log_userTask(new_task.idTarefa, data['idUsuario'])
+        log_userTask(idUsuario=data['idUsuario'], idTarefa=new_task.idTarefa)
         response_object = {
             'status': 'success',
             'message': 'Successfully registered'

@@ -2,6 +2,7 @@ import datetime
 
 from app.main.create_app import db
 from app.main.model.main_models import GrupoTable
+from .groupUser_service import log_userGroup
 
 def create_new_group(data):
     now = datetime.datetime.today().strftime('%Y-%m-%d')
@@ -19,6 +20,7 @@ def create_new_group(data):
         descricao=data['descricao']
     )
     __save_changes(new_group)
+    log_userGroup(idUsuario=data['idUsuario'], idGrupo=new_group.idGrupo)
     response_object = {
         'status': 'success',
         'message': 'Successfully registered'
