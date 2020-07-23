@@ -1,17 +1,18 @@
 import datetime
 
 from app.main.create_app import db
-from app.main.model.main_models import GrupoTable
-from .groupUser_service import log_userGroup
+from app.main.model.main_models import GrupoTable, usuario_grupo
+
+import json
+
 
 def create_new_group(data):
-    now = datetime.datetime.today().strftime('%Y-%m-%d')
     """
         Cria novo  grupo
         param: data = dict/json com as informacoes do grupo 
         passado via request
     """
-
+    now = datetime.datetime.today().strftime('%Y-%m-%d')
     new_group = GrupoTable(
         Loja_idLoja=data['Loja_idLoja'],
         dataCriacao=now,
@@ -20,12 +21,18 @@ def create_new_group(data):
         descricao=data['descricao']
     )
     __save_changes(new_group)
-    log_userGroup(idUsuario=data['idUsuario'], idGrupo=new_group.idGrupo)
+    group = last_group(now=now)
+    print(group)
+    #__log_userGroup(idUsuario=data['idUsuario'])
     response_object = {
         'status': 'success',
         'message': 'Successfully registered'
     }
     return response_object, 201
+
+
+def last_group(now):
+    return GrupoTable.query.filter_by(dataCriacao=now).first()
 
 
 def index_group():
@@ -70,12 +77,24 @@ def show_group(idGrupo):
     return GrupoTable.query.filter_by(idGrupo=idGrupo).first()
 
 
+def __log_userGroup(idUsuario):
+    now = datetime.datetime.today().strftime('%Y-%m-%d')
+
+    group = last_group(now=now)
+    print(group)
+
+    new_log = usuario_grupo(
+        Usuario_idUsuario=idUsuario,
+        Grupo_idGrupo=idGrupo
+    )
+    __save_changes(newLog)
+
+
 def __save_changes(data):
     db.session.add(data)
+    db.session.flush()
     db.session.commit()
-
 
 def __delete_instance(group):
     db.session.delete(group)
     db.session.commit()
-

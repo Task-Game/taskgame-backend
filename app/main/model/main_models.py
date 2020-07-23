@@ -52,7 +52,7 @@ class GrupoTable(db.Model):
                           unique=False,
                           nullable=False)
 
-    grupoUser = db.relationship('UserTable', secondary=usuario_grupo)
+    grupoUser = db.relationship('UserTable', cascade='all', secondary=usuario_grupo)
 
 
 class TarefaTable(db.Model):
@@ -124,4 +124,4 @@ class UserTable(db.Model):
 
     userTarefa = db.relationship('TarefaTable', secondary=usuario_tarefa)
 
-    userGrupo = db.relationship('GrupoTable', secondary=usuario_grupo)
+    userGrupo = db.relationship('GrupoTable',cascade='all', secondary=usuario_grupo)

@@ -1,8 +1,8 @@
-"""e la vamos nos
+"""e la vamos nos  dnv
 
-Revision ID: 7d2105a4cd32
+Revision ID: f50547afba2b
 Revises: 
-Create Date: 2020-07-21 20:02:48.675079
+Create Date: 2020-07-22 20:20:08.038825
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7d2105a4cd32'
+revision = 'f50547afba2b'
 down_revision = None
 branch_labels = None
 depends_on = None

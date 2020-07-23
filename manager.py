@@ -4,7 +4,6 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app.main.create_app import create_app, db
 from app.main.model import main_models, item, secondary_tables, store
-from app.main.model.seeds import make_seed
 from app import blueprint
 
 
@@ -25,13 +24,6 @@ def run():
     """
     app.run()
 
-
-@manager.command
-def seed():
-    """
-    Roda seeds  é trab
-    """
-    make_seed()
 
 @manager.command
 def test():
