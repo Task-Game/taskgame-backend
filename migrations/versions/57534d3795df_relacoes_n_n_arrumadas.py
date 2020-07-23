@@ -1,8 +1,8 @@
-"""e la vamos nos  dnv
+"""relacoes n:n arrumadas
 
-Revision ID: f50547afba2b
+Revision ID: 57534d3795df
 Revises: 
-Create Date: 2020-07-22 20:20:08.038825
+Create Date: 2020-07-22 23:09:14.943604
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f50547afba2b'
+revision = '57534d3795df'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -82,12 +82,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('idTarefa')
     )
     op.create_table('usuario_grupo',
-    sa.Column('idUsuarioGrupo', sa.Integer(), nullable=False),
     sa.Column('Usuario_idUsuario', sa.Integer(), nullable=True),
     sa.Column('Grupo_idGrupo', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['Grupo_idGrupo'], ['Grupo.idGrupo'], ),
-    sa.ForeignKeyConstraint(['Usuario_idUsuario'], ['Usuario.idUsuario'], ),
-    sa.PrimaryKeyConstraint('idUsuarioGrupo')
+    sa.ForeignKeyConstraint(['Usuario_idUsuario'], ['Usuario.idUsuario'], )
     )
     op.create_table('Checklist',
     sa.Column('idChecklist', sa.Integer(), nullable=False),
@@ -98,12 +96,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('idChecklist')
     )
     op.create_table('usuario_tarefa',
-    sa.Column('idUsuarioTarefa', sa.Integer(), nullable=False),
     sa.Column('Usuario_idUsuario', sa.Integer(), nullable=True),
     sa.Column('Tarefa_idTarefa', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['Tarefa_idTarefa'], ['Tarefa.idTarefa'], ),
-    sa.ForeignKeyConstraint(['Usuario_idUsuario'], ['Usuario.idUsuario'], ),
-    sa.PrimaryKeyConstraint('idUsuarioTarefa')
+    sa.ForeignKeyConstraint(['Usuario_idUsuario'], ['Usuario.idUsuario'], )
     )
     # ### end Alembic commands ###
 
