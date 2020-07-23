@@ -41,8 +41,8 @@ class Production(BaseConfig):
 # Por enquanto só temos a configuração de desenvolvimento.
 # Se tiver a de produão tem q colocar aqui tbm
 
-config_by_name = dict(
-    development=Development,
-    testing=Testing,
-    production=Production
-)
+config_by_name = {
+    'development':Development,
+    'testing':Testing,
+    'production':Production
+}

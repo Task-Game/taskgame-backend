@@ -8,9 +8,9 @@ import json
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
 
 
-def create_store(dataEncerramento):
+def create_store(dataFechamento):
     new_store = LojaTable(
-        dataEncerramento=dataEncerramento
+        dataFechamento=dataFechamento
     )
     __save_changes(new_store)
     return new_store.idLoja
