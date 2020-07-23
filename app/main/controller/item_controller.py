@@ -71,7 +71,7 @@ class ItemWithParam(Resource):
         Args:
             self (class.self):
             item_id (id do item que se quer alterar):
-
+            
         """
 
         item = show_item(idItem=item_id)
