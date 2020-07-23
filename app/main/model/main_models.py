@@ -46,7 +46,7 @@ class UserTable(db.Model):
     # Adiciona implicitamente esse atributo na tablea grupo então é possivel fazer Grupo.membros
     userGrupo = db.relationship('GrupoTable', secondary=usuario_grupo,
                              backref=db.backref('membros', lazy='dynamic'))
-    #new_group.membors.append(user)
+    #new_group.membros.append(user)
     #db.session.commit()
 
     userTarefa = db.relationship(

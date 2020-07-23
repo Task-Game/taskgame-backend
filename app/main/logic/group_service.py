@@ -1,14 +1,20 @@
 import datetime
-
-from app.main.create_app import db
-from app.main.model.main_models import GrupoTable, usuario_grupo
-from app.main.model.store import LojaTable
 import json
+
+from .user_service import show_user
+from app.main.create_app import db
+from app.main.model.main_models import GrupoTable, UserTable
+from app.main.model.store import LojaTable
 
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
 
 
-def create_store(dataFechamento):
+# def __getUser(idUser):
+#    user = show_user(idUser)
+#    return user
+
+
+def __create_store(dataFechamento):
     new_store = LojaTable(
         dataFechamento=dataFechamento
     )
@@ -22,8 +28,8 @@ def create_new_group(data):
         param: data = dict/json com as informacoes do grupo 
         passado via request
     """
-
-    idLoja = create_store(data['dataEncerramento'])
+    user = show_user(data['idUsuario'])
+    idLoja = __create_store(data['dataEncerramento'])
 
     new_group = GrupoTable(
         Loja_idLoja=idLoja,
@@ -37,6 +43,10 @@ def create_new_group(data):
         'status': 'success',
         'message': 'Successfully registered'
     }
+
+    new_group.membros.append(user)
+    db.session.commit()
+
     return response_object, 201
 
 
@@ -80,19 +90,6 @@ def delete_group(idGrupo):
 
 def show_group(idGrupo):
     return GrupoTable.query.filter_by(idGrupo=idGrupo).first()
-
-
-# def __log_userGroup(idUsuario):
-#    now = datetime.datetime.today().strftime('%Y-%m-%d')
-#
-#    group = last_group(now=now)
-#    print(group)
-#
-#    new_log = usuario_grupo(
-#        Usuario_idUsuario=idUsuario,
-#        Grupo_idGrupo=idGrupo
-#    )
-#    __save_changes(newLog)
 
 
 def __save_changes(data):
