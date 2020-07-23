@@ -79,6 +79,9 @@ class GrupoTable(db.Model):
                           unique=False,
                           nullable=False)
 
+    tarefa = db.relationship('TarefaTable', backref="grupoTarefa")
+
+
 
 class TarefaTable(db.Model):
     __tablename__ = 'Tarefa'
@@ -103,7 +106,7 @@ class TarefaTable(db.Model):
 
     dataConclusao = db.Column(db.Date,
                               unique=False,
-                              nullable=False)
+                              nullable=True)
 
     nome = db.Column(db.String(100),
                      nullable=False)

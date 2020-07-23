@@ -1,41 +1,41 @@
 import datetime
 import json
 
+from .user_service import show_user
 from app.main.create_app import db
-from app.main.model.main_models import TarefaTable
+from app.main.model.main_models import TarefaTable, UserTable
+
+
+NOW = datetime.datetime.today().strftime('%Y-%m-%d')
 
 
 def create_task(data):
-    now = datetime.datetime.today().strftime('%Y-%m-%d')
     """
         Criar nova task
         @param:  data = dict/json corpo da requisição enviado via post
     """
+    user = show_user(data['idUsuario'])
 
-    task = TarefaTable.query.filter_by(nome=data['nome']).first()
-    if not task:
-        new_task = TarefaTable(
-            Grupo_idGrupo=data['Grupo_idGrupo'],
-            Frequencia_idFrequencia=data['Frequencia_idFrequencia'],
-            Raridade_idRaridade=data['Raridade_idRaridade'],
-            dataAbertura=now,
-            nome=data['nome'],
-            descricao=data['descricao'],
-            prazo=now + datetime.timedelta(days=2),
-            status=data['status']
-        )
-        __save_changes(new_task)
-        response_object = {
-            'status': 'success',
-            'message': 'Successfully registered'
-        }
-        return response_object, 201
-    else:
-        response_object = {
-            'status': 'fail',
-            'message': 'Already registered, please login'
-        }
-        return response_object, 409
+    new_task = TarefaTable(
+        Grupo_idGrupo=data['Grupo_idGrupo'],
+        Frequencia_idFrequencia=data['Frequencia_idFrequencia'],
+        Raridade_idRaridade=data['Raridade_idRaridade'],
+        dataAbertura=NOW,
+        nome=data['nome'],
+        descricao=data['descricao'],
+        prazo=data['prazo'],
+        status=0
+    )
+    __save_changes(new_task)
+    response_object = {
+        'status': 'success',
+        'message': 'Successfully registered'
+    }
+
+    new_task.task.append(user)
+    db.session.commit()
+
+    return response_object, 201
 
 
 def index_task():
@@ -45,7 +45,8 @@ def index_task():
 def update_task(idTarefa, data):
     task = TarefaTable.query.filter_by(idTarefa=idTarefa).first()
     if task:
-        TarefaTable.update().where(idTarefa=idTarefa).values(data)
+        TarefaTable.query.filter(TarefaTable.idTarefa==idTarefa).update(data)
+        db.session.commit()
         response_object = {
             'status': 'success',
             'message': 'Successfully update'

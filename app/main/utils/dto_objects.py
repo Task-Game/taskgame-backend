@@ -3,7 +3,7 @@ from flask_restplus import Namespace, fields
 
 class UserDto:
     api = Namespace(
-        'user', description='Operacoes relacionadas com o "Usuário"')
+        'User', description='Operacoes relacionadas com o "Usuário"')
     user = api.model('user', {
         'idUsuario': fields.Integer(required=False, description='Id do usuario'),
         # TODO: Verificar se existe no corpo da requisicão
@@ -20,7 +20,7 @@ class UserDto:
 
 class TaskDto:
     api = Namespace(
-        'task', description='Operacoes relacionadas com a "Tarefa"'
+        'Task', description='Operacoes relacionadas com a "Tarefa"'
     )
     # TODO: Fazer a verificacao dos parametros: idTarefa, Nome, Data Abertura, Descicao, Status
     task = api.model('task', {
@@ -36,16 +36,31 @@ class TaskDto:
         'status': fields.Boolean(required=False, description='Status da tarefa'),
     })
 
+
 class GroupDto:
     api = Namespace(
-        'group', description='Operacoes relacionadas com o "Grupo"'
+        'Group', description='Operacoes relacionadas com o "Grupo"'
     )
 
-    group = api.model('group',{
+    group = api.model('group', {
         'idGrupo': fields.Integer(required=False, description='Id referente ao grupo'),
         'Loja_idLoja': fields.Integer(required=False, description='Id referente a loja'),
         'dataCriacao': fields.Date(required=False, description='Data da criacão do grupo'),
         'dataEncerramento': fields.Date(required=False, description='Data de encerramento do grupo'),
         'nome': fields.String(required=False, descriptio='Nome do grupo'),
         'descricao': fields.String(required=False, description='Descricao do grupo')
+    })
+
+
+class ItemDto:
+    api = Namespace(
+        'Item', description='Operacoes relacionadas com o "Item"'
+    )
+
+    item = api.model('item', {
+        'idItem': fields.Integer(required=False, description='Id referente ao item em questão'),
+        'Loja_idLoja': fields.Integer(required=False, description='Id referente a loja'),
+        'nome': fields.String(required=False, descriptio='Nome do item'),
+        'descricao': fields.String(required=False, description='Descricao do item'),
+        'valor': fields.Integer(required=False, description='Valor do item')
     })

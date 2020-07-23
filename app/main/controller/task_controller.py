@@ -76,19 +76,18 @@ class TaskWithParam(Resource):
             return task
 
 
-@api.route('/api/v1/task/status/<task_id>')
+@api.route('/status/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'Task not found')
-class TaskUtils(Resource):
+class TaskStatus(Resource):
 
     @api.doc('Verificar status de uma tarefa')
     def get(self, task_id):
         """
         Retorna status da tarefa
         """
-
-        task = get_status(idTarefa=task_id)
+        task = show_task(idTarefa=task_id)
         if not task:
             api.abort(404)
         else:
-            return task
+            return get_status(idTarefa=task_id)

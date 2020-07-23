@@ -1,17 +1,11 @@
 import datetime
-import json
 
 from .user_service import show_user
 from app.main.create_app import db
-from app.main.model.main_models import GrupoTable, UserTable
+from app.main.model.main_models import GrupoTable
 from app.main.model.store import LojaTable
 
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
-
-
-# def __getUser(idUser):
-#    user = show_user(idUser)
-#    return user
 
 
 def __create_store(dataFechamento):
@@ -38,6 +32,7 @@ def create_new_group(data):
         nome=data['nome'],
         descricao=data['descricao']
     )
+
     __save_changes(new_group)
     response_object = {
         'status': 'success',
@@ -57,7 +52,7 @@ def index_group():
 def update_group(idGrupo, data):
     group = GrupoTable.query.filter_by(idGrupo=idGrupo).first()
     if group:
-        group.query.update(values=data)
+        GrupoTable.query.filter(GrupoTable.idGrupo == idGrupo).update(data)
         response_object = {
             'status': 'success',
             'message': 'Successfully update'

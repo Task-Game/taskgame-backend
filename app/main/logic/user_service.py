@@ -44,7 +44,7 @@ def index_user():
 def update_user(idUsuario, data):
     user = UserTable.query.filter_by(idUsuario=idUsuario).first()
     if user:
-        UserTable.update().where(idUsuario=idUsuario).values(data)
+        UserTable.query.filter(UserTable.idUsuario==idUsuario).update(data)
         response_object = {
             'status': 'success',
             'message': 'Successfully update'
