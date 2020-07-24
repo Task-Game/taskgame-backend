@@ -120,10 +120,19 @@ class TaskUser(Resource):
     @api.response(201, 'Tarefa finalizada com sucesso')
     @api.expect(_task, validation=True)
     def post(self, task_id):
+        """
+        Atualiza o status da tarefa e adiciona creditos ao usuario
+
+        Args:
+            self (class.self):
+            task_id (id referente a tarefa):
+
+        """
         task = show_task(idTarefa=task_id)
+        data = request.json
 
         if not task:
             api.abort(404)
             return "task don't exists"
         else:
-            return finish_task(idTarefa=task_id)
+            return finish_task(idTarefa=task_id, data=data)

@@ -4,7 +4,7 @@ import json
 from .user_service import show_user
 from app.main.create_app import db
 from app.main.model.main_models import TarefaTable, usuario_tarefa
-
+from app.main.model.secondary_tables import RaridadeTable
 
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
 
@@ -45,7 +45,7 @@ def index_task():
 def update_task(idTarefa, data):
     task = TarefaTable.query.filter_by(idTarefa=idTarefa).first()
     if task:
-        TarefaTable.query.filter(TarefaTable.idTarefa==idTarefa).update(data)
+        TarefaTable.query.filter(TarefaTable.idTarefa == idTarefa).update(data)
         db.session.commit()
         response_object = {
             'status': 'success',
@@ -86,11 +86,39 @@ def get_status(idTarefa):
         TarefaTable.idTarefa == idTarefa).scalar()
     return status
 
-def index_userTask(idTarefa):
-    data = dict(db.session.query(usuario_tarefa).filter_by(Tarefa_idTarefa=idTarefa).all())
 
+def index_userTask(idTarefa):
+    data = dict(db.session.query(usuario_tarefa).filter_by(
+        Tarefa_idTarefa=idTarefa).all())
     return data
 
+
+def finish_task(idTarefa, data):
+    idRaridadeTarefa = db.session.query(TarefaTable.Raridade_idRaridade).filter(
+        TarefaTable.idTarefa == idTarefa
+    ).scalar()
+
+    creditos = db.session.query(RaridadeTable.recompensa).filter(
+        RaridadeTable.idRaridade == idRaridadeTarefa
+    ).scalar()
+
+    task = show_task(idTarefa=idTarefa)
+    user = show_user(idUsuario=data['idUsuario'])
+
+    print("usuario:",user.credito)
+    task.status = 1
+    db.session.commit()
+
+    user.credito = creditos
+    db.session.commit()
+    print("usuario:",user.credito)
+
+    response_object = {
+            'status': 'success',
+            'message': 'Successfully Update'
+        }
+
+    return response_object
 
 
 def __save_changes(data):
