@@ -45,6 +45,7 @@ def update_user(idUsuario, data):
     user = UserTable.query.filter_by(idUsuario=idUsuario).first()
     if user:
         UserTable.query.filter(UserTable.idUsuario==idUsuario).update(data)
+        db.session.commit()
         response_object = {
             'status': 'success',
             'message': 'Successfully update'

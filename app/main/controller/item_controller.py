@@ -8,7 +8,7 @@ api = ItemDto.api
 _item = ItemDto.item
 
 
-@api.route('/')
+@api.route('/api/v1/')
 class ItemCreateIndex(Resource):
     @api.doc('Retorna todos os item do banco')
     @api.marshal_list_with(_item, envelope='data')
@@ -37,7 +37,7 @@ class ItemCreateIndex(Resource):
         return create_new_item(data)
 
 
-@api.route('/<item_id>')
+@api.route('/api/v1/<item_id>')
 @api.param('item_id', 'identificacao do item')
 @api.response(404, 'Item not found')
 class ItemWithParam(Resource):

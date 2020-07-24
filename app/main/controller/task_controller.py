@@ -8,7 +8,7 @@ api = TaskDto.api
 _task = TaskDto.task
 
 
-@api.route('/')
+@api.route('/api/v1/')
 class TaskCreateIndex(Resource):
     @api.doc('Retorna todas as tarefas')
     @api.marshal_list_with(_task, envelope='data')
@@ -29,7 +29,7 @@ class TaskCreateIndex(Resource):
         return create_task(data=data)
 
 
-@api.route('/<task_id>')
+@api.route('/api/v1/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'Task not found')
 class TaskWithParam(Resource):
@@ -76,7 +76,7 @@ class TaskWithParam(Resource):
             return task
 
 
-@api.route('/status/<task_id>')
+@api.route('api/v1/status/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'Task not found')
 class TaskStatus(Resource):
@@ -92,7 +92,7 @@ class TaskStatus(Resource):
         else:
             return get_status(idTarefa=task_id)
 
-@api.route('/user/<task_id>')
+@api.route('/api/v1/user/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'User not found')
 class TaskUser(Resource):

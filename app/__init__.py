@@ -15,7 +15,7 @@ api = Api(blueprint,
           description='Api criada com o intuito de ser o backend da aplicacão "TaskGame" - TCC Desenvolvimento de Sistema ETEC Irmã Agostina'
           )
 
-api.add_namespace(user_namespace, path='/api/v1/user')
-api.add_namespace(task_namespace, path='/api/v1/task')
-api.add_namespace(group_namespace, path='/api/v1/group')
-api.add_namespace(item_namespace, path='/api/v1/item')
+api.add_namespace(user_namespace, path='/user')
+api.add_namespace(task_namespace, path='/task')
+api.add_namespace(group_namespace, path='/group')
+api.add_namespace(item_namespace, path='/item')
