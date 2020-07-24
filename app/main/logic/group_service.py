@@ -2,7 +2,7 @@ import datetime
 
 from .user_service import show_user
 from app.main.create_app import db
-from app.main.model.main_models import GrupoTable
+from app.main.model.main_models import GrupoTable, usuario_grupo
 from app.main.model.store import LojaTable
 
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
@@ -85,6 +85,12 @@ def delete_group(idGrupo):
 
 def show_group(idGrupo):
     return GrupoTable.query.filter_by(idGrupo=idGrupo).first()
+
+
+def index_members(idGrupo):
+    data = dict(db.session.query(usuario_grupo).filter_by(Grupo_idGrupo=idGrupo).all())
+
+    return data
 
 
 def __save_changes(data):

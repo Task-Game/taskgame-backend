@@ -75,3 +75,4 @@ class UserWithParam(Resource):
             api.abort(404)
         else:
             return user
+

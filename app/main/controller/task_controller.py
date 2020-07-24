@@ -91,3 +91,27 @@ class TaskStatus(Resource):
             api.abort(404)
         else:
             return get_status(idTarefa=task_id)
+
+@api.route('/user/<task_id>')
+@api.param('task_id', 'Identificacão da tarefa')
+@api.response(404, 'User not found')
+class TaskUser(Resource):
+
+    @api.doc('Retorna ids das tarefas em que o usuario esta')
+    def get(self, task_id):
+        """
+        Retorna id dos usuario desse tarefa
+
+        Args:
+            self (class.self):
+            task_id (id do tarefa):
+
+        """
+        task = show_task(idTarefa=task_id)
+        
+
+        if not task:
+            api.abort(404)
+            return "task don't exists"
+        else:
+            return index_userTask(idTarefa=task_id)

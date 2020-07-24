@@ -3,7 +3,7 @@ import json
 
 from .user_service import show_user
 from app.main.create_app import db
-from app.main.model.main_models import TarefaTable, UserTable
+from app.main.model.main_models import TarefaTable, usuario_tarefa
 
 
 NOW = datetime.datetime.today().strftime('%Y-%m-%d')
@@ -85,6 +85,12 @@ def get_status(idTarefa):
     status = db.session.query(TarefaTable.status).filter(
         TarefaTable.idTarefa == idTarefa).scalar()
     return status
+
+def index_userTask(idTarefa):
+    data = dict(db.session.query(usuario_tarefa).filter_by(Tarefa_idTarefa=idTarefa).all())
+
+    return data
+
 
 
 def __save_changes(data):

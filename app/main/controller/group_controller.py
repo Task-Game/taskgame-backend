@@ -64,7 +64,6 @@ class GrupoWithParam(Resource):
         else:
             return group
 
-
     @api.doc('Deleta Grupo')
     def delete(self, group_id):
         """
@@ -78,3 +77,28 @@ class GrupoWithParam(Resource):
             return "Group don't exists"
         else:
             return delete_group(idGrupo=group_id)
+
+
+@api.route('/user/<group_id>')
+@api.param('group_id', 'Identificacão do usuario')
+@api.response(404, 'User not found')
+class GroupUser(Resource):
+
+    @api.doc('Retorna ids dos grupos em que o usuario esta')
+    def get(self, group_id):
+        """
+        Retorna id dos usuario desse grupo
+
+        Args:
+            self (class.self):
+            group_id (id do grupo):
+
+        """
+        group = show_group(idGrupo=group_id)
+        
+
+        if not group:
+            api.abort(404)
+            return "Group don't exists"
+        else:
+            return index_members(idGrupo=group_id)
