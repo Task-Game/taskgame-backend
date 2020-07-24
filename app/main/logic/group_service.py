@@ -53,6 +53,7 @@ def update_group(idGrupo, data):
     group = GrupoTable.query.filter_by(idGrupo=idGrupo).first()
     if group:
         GrupoTable.query.filter(GrupoTable.idGrupo == idGrupo).update(data)
+        db.session.commit()
         response_object = {
             'status': 'success',
             'message': 'Successfully update'

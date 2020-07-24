@@ -32,6 +32,7 @@ def update_item(idItem, data):
     item = ItemTable.query.filter_by(idItem=idItem).first()
     if item:
         ItemTable.query.filter(ItemTable.idItem == idItem).update(data)
+        db.session.commit()
         response_object = {
             'status': 'success',
             'message': 'Successfully update'

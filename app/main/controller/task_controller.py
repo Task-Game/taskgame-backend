@@ -92,6 +92,7 @@ class TaskStatus(Resource):
         else:
             return get_status(idTarefa=task_id)
 
+
 @api.route('/api/v1/user/<task_id>')
 @api.param('task_id', 'Identificacão da tarefa')
 @api.response(404, 'User not found')
@@ -108,10 +109,21 @@ class TaskUser(Resource):
 
         """
         task = show_task(idTarefa=task_id)
-        
 
         if not task:
             api.abort(404)
             return "task don't exists"
         else:
             return index_userTask(idTarefa=task_id)
+
+    @api.doc('Finaliza tarefa, adicionando creditos ao usuario')
+    @api.response(201, 'Tarefa finalizada com sucesso')
+    @api.expect(_task, validation=True)
+    def post(self, task_id):
+        task = show_task(idTarefa=task_id)
+
+        if not task:
+            api.abort(404)
+            return "task don't exists"
+        else:
+            return finish_task(idTarefa=task_id)

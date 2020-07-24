@@ -61,9 +61,9 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [] Show itens per shop
 
 ### Meta
-- [] Index(Mostrar todos)
-- [] Create(Criar novo)
-- [] Show(Mostar um espeficio)
-- [] Update(Editar um espefico)
-- [] Destroy(Deletar um especifico)
+- [x] Index(Mostrar todos)
+- [x] Create(Criar novo)
+- [x] Show(Mostar um espeficio)
+- [x] Update(Editar um espefico)
+- [x] Destroy(Deletar um especifico)
 - [] Show goals in task
