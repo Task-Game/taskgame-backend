@@ -34,7 +34,7 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [x] Show(Mostar um espeficio)
 - [x] Update(Editar um espefico)
 - [x] Destroy(Deletar um especifico)
-- [] Show user per project
+- [x] Show user per project
 
 ### Usuario
 - [x] Index(Mostrar todos "read")
@@ -42,7 +42,7 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [x] Update(Editar um espefico "update")
 - [x] Destroy(Deletar um especifico "delete")
 - [x] Show(Mostar um espeficio "read")
-- [] Show task per user
+- [x] Show task per user
 
 ### Tarefas
 - [x] Index(Mostrar todos)
@@ -50,7 +50,7 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [x] Show(Mostar um espeficio)
 - [x] Update(Editar um espefico)
 - [x] Destroy(Deletar um especifico)
-- [] Show user in task
+- [x] Show user in task
 
 ### Item
 - [x] Index(Mostrar todos)
@@ -58,7 +58,7 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [x] Show(Mostar um espeficio)
 - [x] Update(Editar um espefico)
 - [x] Destroy(Deletar um especifico)
-- [] Show itens per shop
+- [x] Show itens per shop
 
 ### Meta
 - [x] Index(Mostrar todos)
@@ -66,4 +66,4 @@ Email para contato: [tcctaskgame@gmail.com](tcctaskgame@gmail.com)
 - [x] Show(Mostar um espeficio)
 - [x] Update(Editar um espefico)
 - [x] Destroy(Deletar um especifico)
-- [] Show goals in task
+- [x] Show goals in task
